@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
-import logo from "../assets/images/site-logo.svg";
+import logo from "../assets/images/logo/logo-color.svg";
 
 function Header({ categoriesList }) {
   return (
