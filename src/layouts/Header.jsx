@@ -12,7 +12,7 @@ function Header() {
   return (
     <header className="header">
       <div className="container">
-        <nav className="navbar navbar-expand-lg">
+        <nav className="navbar navbar-expand-xl">
           <div className="site-logo me-3">
             <Link className="navbar-brand" to="/">
               <img className="logo-icon" src={logo} alt="logo" />
