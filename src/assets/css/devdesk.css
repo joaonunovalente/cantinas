@@ -13259,6 +13259,10 @@ a.text-link:hover {
   color: rgb(255, 255, 255);
   text-decoration: underline;
 }
+.footer .logo-icon {
+  height: 40px;
+  width: auto;
+}
 
 /* Animated Hamburger Icon for Bootstrap */
 .navbar-toggler {
