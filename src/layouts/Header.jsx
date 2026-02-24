@@ -1,9 +1,14 @@
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/images/logo/logo-color.svg";
+import hyperlink from "../assets/images/hyperlink.png";
+import hyperlinkPurple from "../assets/images/hyperlink-purple.png";
 import unidadesAlimentares from "../data/unidadesAlimentares";
 import maisInformacoes from "../data/maisInformacoes";
 
 function Header() {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <header className="header">
       <div className="container">
@@ -89,20 +94,19 @@ function Header() {
                       href="https://mysas.ua.pt/"
                       target="_blank"
                       rel="noopener noreferrer"
+                      onMouseEnter={() => setIsHovered(true)}
+                      onMouseLeave={() => setIsHovered(false)}
                     >
-                      Portal MySAS
+                      Portal MySAS{" "}
+                      <img
+                        className="hyperlink"
+                        src={isHovered ? hyperlinkPurple : hyperlink}
+                        alt="Ligação para o Portal MySAS"
+                      />
                     </a>
                   </li>
                 </ul>
               </li>
-              {/* <li className="nav-item pt-3 pt-lg-0">
-                <a
-                  className="nav-btn btn btn-primary text-white"
-                  href="https://themes.3rdwavemedia.com/bootstrap-templates/product/devdesk-free-bootstrap-5-knowledge-base-help-centre-template-for-tech-products/"
-                >
-                  Portal MySAS
-                </a>
-              </li> */}
             </ul>
           </div>
         </nav>

@@ -1,0 +1,12 @@
+@media (max-width: 1200px) {
+    .hyperlink {
+        filter: brightness(0) invert(1);
+    }
+}
+
+.hyperlink {
+  width: 14px;
+  height: 14px;
+  margin-bottom: 5px;
+  margin-left: 2px;
+}
