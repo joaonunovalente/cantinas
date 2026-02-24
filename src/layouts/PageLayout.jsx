@@ -1,7 +1,6 @@
 import Header from './Header';
 import Footer from './Footer';
 import Hero from './Hero';
-import categories from '../data/categories';
 
 function PageLayout({ children, heroTitle, heroDescription }) {
   return (
@@ -11,7 +10,7 @@ function PageLayout({ children, heroTitle, heroDescription }) {
           <div className="bg-pattern-top"></div>
           <div className="bg-pattern-bottom"></div>
         </div>
-        <Header categoriesList={categories} />
+        <Header />
         <Hero title={heroTitle} description={heroDescription} />
       </div>
 
