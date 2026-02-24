@@ -34,7 +34,7 @@ function Header() {
           </button>
 
           <div className="collapse navbar-collapse ms-auto" id="navigation">
-            <ul className="navbar-nav ms-auto align-items-lg-center">
+            <ul className="navbar-nav ms-auto align-items-xl-center">
               <li className="nav-item me-lg-4">
                 <NavLink className="nav-link" to="/">
                   Hoje
