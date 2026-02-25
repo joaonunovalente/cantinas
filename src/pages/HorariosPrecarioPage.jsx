@@ -1,21 +1,33 @@
+import { useState } from "react";
 import PageLayout from "../layouts/PageLayout";
-
 import Hero from "../components/horarios-precario/Hero";
-import CategoriesSection from "../components/horarios-precario/CategoriesSection";
-import PopularArticles from "../components/horarios-precario/PopularArticles";
-import CtaSection from "../components/horarios-precario/CtaSection";
+import MainContent from "../components/horarios-precario/MainContent";
+
 
 import categories from "../data/categories";
-import popularArticles from "../data/popularArticles";
 
-function HomePage() {
+function HorariosPrecarioPage() {
+  const [activeTab, setActiveTab] = useState("horarios");
+
+  const tabs = [
+    { id: "horarios", label: "Horários" },
+    { id: "precario", label: "Preçário" },
+  ];
+
   return (
-    <PageLayout hero={<Hero />}>
-      <PopularArticles articles={popularArticles} />
-      <CategoriesSection categoriesList={categories} />
-      <CtaSection />
+    <PageLayout
+      hero={
+        <Hero
+          tabs={tabs}
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+        />
+      }
+    >
+    <MainContent categories={categories} activeTab={activeTab} />
+      
     </PageLayout>
   );
 }
 
-export default HomePage;
+export default HorariosPrecarioPage;

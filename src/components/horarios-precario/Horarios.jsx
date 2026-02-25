@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 
-function CategoriesSection({ categoriesList }) {
+function Horarios({ categoriesList }) {
   return (
-    <section className="help-category-section theme-section pt-0">
+    <section className="help-category-section theme-section">
       <div className="container">
         <div className="section-header text-center mb-5">
-          <h2 className="section-title mb-3">Categories</h2>
+          <h2 className="section-title mb-3">Horários</h2>
         </div>
 
         <div className="row text-center align-content-stretch justify-content-center">
@@ -29,4 +29,4 @@ function CategoriesSection({ categoriesList }) {
   );
 }
 
-export default CategoriesSection;
+export default Horarios;
