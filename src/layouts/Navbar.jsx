@@ -6,7 +6,7 @@ import hyperlinkPurple from "../assets/images/hyperlink-purple.png";
 import unidadesAlimentares from "../data/unidadesAlimentares";
 import maisInformacoes from "../data/maisInformacoes";
 
-function Header() {
+function Navbar() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -132,4 +132,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Navbar;

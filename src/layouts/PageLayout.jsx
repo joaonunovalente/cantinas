@@ -1,8 +1,8 @@
-import Header from './Header';
+import Navbar from './Navbar';
 import Footer from './Footer';
-import Hero from './Hero';
+// import Hero from './Hero';
 
-function PageLayout({ children, heroTitle, heroDescription }) {
+function PageLayout({ children, hero }) {
   return (
     <>
       <div className="page-header-wrapper">
@@ -10,8 +10,8 @@ function PageLayout({ children, heroTitle, heroDescription }) {
           <div className="bg-pattern-top"></div>
           <div className="bg-pattern-bottom"></div>
         </div>
-        <Header />
-        <Hero title={heroTitle} description={heroDescription} />
+        <Navbar />
+        {hero}
       </div>
 
       {children}

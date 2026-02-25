@@ -1,4 +1,4 @@
-import SearchForm from '../components/common/SearchForm';
+import SearchForm from '../common/SearchForm';
 
 function Hero({ title = 'Welcome to Our Knowledge Base', description = 'Find articles and resources to help with your questions.' }) {
   return (
