@@ -9,19 +9,11 @@ const appRoutes = [
     element: <HomePage />,
   },
   {
-    path: "/category",
-    element: <CategoryPage />,
-  },
-  {
-    path: "/article",
-    element: <ArticlePage />,
-  },
-  {
     path: "*",
     element: <NotFoundPage />,
   },
 ];
 
-const legacyRedirects = ["/index.html", "/help-category.html", "/help-article.html"];
+const legacyRedirects = ["/index.html"];
 
 export { appRoutes, legacyRedirects };
