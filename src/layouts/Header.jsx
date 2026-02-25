@@ -105,6 +105,23 @@ function Header() {
                       />
                     </a>
                   </li>
+                  <li>
+                    <a
+                      className="dropdown-item"
+                      href="https://blog.cantinas.pt/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onMouseEnter={() => setIsHovered(true)}
+                      onMouseLeave={() => setIsHovered(false)}
+                    >
+                      Blog{" "}
+                      <img
+                        className="hyperlink"
+                        src={isHovered ? hyperlinkPurple : hyperlink}
+                        alt="Ligação para o Blog do Cantinas.pt"
+                      />
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
