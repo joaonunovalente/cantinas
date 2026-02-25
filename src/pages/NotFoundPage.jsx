@@ -1,10 +1,10 @@
-import HeroNotFoundPage from "../components/not-found/HeroNotFoundPage";
+import Hero from "../components/not-found/Hero";
 import MainContent from "../components/not-found/MainContent";
 import PageLayout from "../layouts/PageLayout";
 
 function NotFoundPage() {
   return (
-    <PageLayout hero={<HeroNotFoundPage />}>
+    <PageLayout hero={<Hero />}>
       <MainContent />
     </PageLayout>
   );

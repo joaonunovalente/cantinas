@@ -1,6 +1,6 @@
 import SearchForm from "../common/SearchForm";
 
-function HeroNotFoundPage({
+function Hero({
   title = "Page not found",
   description = "The page you are looking for can not be found.",
 }) {
@@ -19,4 +19,4 @@ function HeroNotFoundPage({
   );
 }
 
-export default HeroNotFoundPage;
+export default Hero;
