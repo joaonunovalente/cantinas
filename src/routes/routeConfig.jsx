@@ -1,3 +1,4 @@
+import ContactoPage from "../pages/ContactoPage";
 import HomePage from "../pages/HomePage";
 import HorariosPrecarioPage from "../pages/HorariosPrecarioPage";
 import NotFoundPage from "../pages/NotFoundPage";
@@ -25,6 +26,10 @@ const appRoutes = [
   {
     path: "/perguntas-frequentes",
     element: <FaqPage />,
+  },
+  {
+    path: "/contacto",
+    element: <ContactoPage />,
   },
   {
     path: "*",
