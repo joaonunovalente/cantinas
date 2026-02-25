@@ -1,7 +1,8 @@
 import HomePage from "../pages/HomePage";
-import HorariosPrecarioPage from "../pages/HorariosPrecarioPage"
+import HorariosPrecarioPage from "../pages/HorariosPrecarioPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import SemanaPage from "../pages/SemanaPage";
+import SobreCantinasPage from "../pages/SobreCantinasPage";
 
 const appRoutes = [
   {
@@ -15,6 +16,10 @@ const appRoutes = [
   {
     path: "/horarios-precario",
     element: <HorariosPrecarioPage />,
+  },
+  {
+    path: "/sobre",
+    element: <SobreCantinasPage />,
   },
   {
     path: "*",
