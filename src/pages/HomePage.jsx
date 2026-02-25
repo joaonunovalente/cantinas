@@ -1,11 +1,12 @@
-import CategoriesSection from "../components/home/CategoriesSection";
-import CtaSection from "../components/home/CtaSection";
-import PopularArticles from "../components/home/PopularArticles";
 import PageLayout from "../layouts/PageLayout";
+
+import HeroHomePage from "../components/home/Hero";
+import CategoriesSection from "../components/home/CategoriesSection";
+import PopularArticles from "../components/home/PopularArticles";
+import CtaSection from "../components/home/CtaSection";
+
 import categories from "../data/categories";
 import popularArticles from "../data/popularArticles";
-
-import HeroHomePage from "../components/home/HeroHomePage"
 
 function HomePage() {
   return (
