@@ -42,3 +42,29 @@
   color: #fff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
+
+.mobile-col1 {
+  width: 50%;
+}
+
+.mobile-col2 {
+  width: 25%;
+}
+
+.mobile-col3 {
+  width: 25%;
+}
+
+@media (max-width: 767px) {
+  .mobile-col1 {
+    width: 32%;
+  }
+
+  .mobile-col2 {
+    width: 30%;
+  }
+
+  .mobile-col3 {
+    width: 38%;
+  }
+}

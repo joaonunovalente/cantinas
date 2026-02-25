@@ -1,31 +1,40 @@
-import { Link } from 'react-router-dom';
-
-function Horarios({ categoriesList }) {
+function Horarios({ horarios }) {
   return (
-    <section className="help-category-section theme-section">
-      <div className="container">
-        <div className="section-header text-center mb-5">
-          <h2 className="section-title mb-3">Horários</h2>
-        </div>
+    <div className="row">
+      {horarios.map((cantina) => (
+        <div key={cantina.id}>
+          <h3 className="mt-4 mb-2">{cantina.nome}</h3>
 
-        <div className="row text-center align-content-stretch justify-content-center">
-          {categoriesList.map((category) => (
-            <div className="item col-12 col-md-6 col-lg-4 py-4 p-md-4" key={category.title}>
-              <div className="item-inner shadow rounded-4 p-4 p-lg-5">
-                <Link className="item-link" to={category.href}>
-                  <div className="icon-holder mb-4">
-                    <img src={category.icon} alt={category.title} />
-                  </div>
-                  <h3 className="item-heading">{category.title}</h3>
-                  <div className="item-desc">{category.description}</div>
-                  <div className="item-count">{category.count}</div>
-                </Link>
-              </div>
-            </div>
-          ))}
+          <table className="table table-striped table-bordered mt-4">
+            <colgroup>
+              <col className="mobile-col1" />
+              <col className="mobile-col2" />
+              <col className="mobile-col3" />
+            </colgroup>
+
+            <thead>
+              <tr>
+                <th>Período</th>
+                <th>Refeição</th>
+                <th>Horário</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cantina.horarios.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.periodo}</td>
+                  <td>{item.refeicao}</td>
+                  <td>{item.horario}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p className=" mb-4">
+            <strong>Localização:</strong> {cantina.localizacao}
+          </p>
         </div>
-      </div>
-    </section>
+      ))}
+    </div>
   );
 }
 

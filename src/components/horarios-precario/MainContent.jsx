@@ -1,17 +1,17 @@
-import Precario from "./Precario";
-import Horarios from "./Horarios";
+import PrecarioSection from "./PrecarioSection";
+import HorariosSection from "./HorariosSection";
 
-function MainContent({ categories, activeTab}) {
+function MainContent({ horarios, precario, activeTab}) {
   return (
     <main className="container">
       {activeTab === "horarios" && (
         <div>
-          <Horarios categoriesList={categories} />
+          <HorariosSection horarios={horarios} />
         </div>
       )}
       {activeTab === "precario" && (
         <div>
-          <Precario categoriesList={categories} />
+          <PrecarioSection precario={precario} />
         </div>
       )}
     </main>

@@ -3,8 +3,8 @@ import PageLayout from "../layouts/PageLayout";
 import Hero from "../components/horarios-precario/Hero";
 import MainContent from "../components/horarios-precario/MainContent";
 
-
-import categories from "../data/categories";
+import horarios from "../data/horarios";
+import precario from "../data/precario";
 
 function HorariosPrecarioPage() {
   const [activeTab, setActiveTab] = useState("horarios");
@@ -24,7 +24,7 @@ function HorariosPrecarioPage() {
         />
       }
     >
-    <MainContent categories={categories} activeTab={activeTab} />
+    <MainContent horarios={horarios} precario={precario} activeTab={activeTab} />
       
     </PageLayout>
   );
