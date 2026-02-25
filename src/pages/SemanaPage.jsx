@@ -1,9 +1,9 @@
 import PageLayout from "../layouts/PageLayout";
 
-import Hero from "../components/home/Hero";
-import CategoriesSection from "../components/home/CategoriesSection";
-import PopularArticles from "../components/home/PopularArticles";
-import CtaSection from "../components/home/CtaSection";
+import Hero from "../components/semana/Hero";
+import CategoriesSection from "../components/semana/CategoriesSection";
+import PopularArticles from "../components/semana/PopularArticles";
+import CtaSection from "../components/semana/CtaSection";
 
 import categories from "../data/categories";
 import popularArticles from "../data/popularArticles";
