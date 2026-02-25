@@ -75,7 +75,7 @@ const precario = [
   },
   {
     id: "cantina-estga",
-    nome: "Cantina ESTGA",
+    nome: "Cantina da ESTGA",
     precos: [
       { id: "estga-1", tipo: "Estudantes", normal: "2,80\u00A0€", opcao: "3,80\u00A0€" },
       { id: "estga-2", tipo: "Docentes, funcionários e investigadores", normal: "4,90\u00A0€", opcao: "5,90\u00A0€" },

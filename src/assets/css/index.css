@@ -55,16 +55,45 @@
   width: 25%;
 }
 
+
 @media (max-width: 767px) {
   .mobile-col1 {
-    width: 32%;
+    width: 45%;
   }
 
   .mobile-col2 {
-    width: 30%;
+    width: 25%;
   }
 
   .mobile-col3 {
-    width: 38%;
+    width: 30%;
+  }
+}
+
+@media (max-width: 450px) {
+  .mobile-col1 {
+    width: 40%;
+  }
+
+  .mobile-col2 {
+    width: 25%;
+  }
+
+  .mobile-col3 {
+    width: 35%;
+  }
+}
+
+@media (max-width: 400px) {
+  .mobile-col1 {
+    width: 35%;
+  }
+
+  .mobile-col2 {
+    width: 25%;
+  }
+
+  .mobile-col3 {
+    width: 40%;
   }
 }
