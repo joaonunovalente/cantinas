@@ -1,15 +1,18 @@
-@media (max-width: 1200px) {
-  .hyperlink {
-    filter: brightness(0) invert(1);
-  }
-}
-
 .hyperlink {
   filter: brightness(0) invert(0.2);
   width: 14px;
   height: 14px;
   margin-bottom: 5px;
   margin-left: 2px;
+}
+
+@media (max-width: 1200px) {
+  .hyperlink {
+    filter: brightness(0) invert(1);
+    width: 14px;
+    height: 14px;
+    margin-left: 4px;
+  }
 }
 
 .navbar-nav .nav-link {
