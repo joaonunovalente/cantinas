@@ -1,11 +1,9 @@
+import HeroNotFoundPage from "../components/not-found/HeroNotFoundPage";
 import PageLayout from "../layouts/PageLayout";
 
 function NotFoundPage() {
   return (
-    <PageLayout
-      heroTitle="Page not found"
-      heroDescription="The page you are looking for does not exist."
-    >
+    <PageLayout hero={<HeroNotFoundPage />}>
       <section className="help-featured-section theme-section">
         <div className="container">
           <div className="section-header text-center mb-5">
