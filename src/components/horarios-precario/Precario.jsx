@@ -25,7 +25,7 @@ function Precario({ precario }) {
           colgroup = (
             <colgroup>
               <col style={{ width: "40%" }} />
-              <col style={{ width: "30%" }} />
+              <col style={{ width: "40%" }} />
               <col style={{ width: "20%" }} />
             </colgroup>
           );
@@ -107,7 +107,7 @@ function Precario({ precario }) {
             </table>
 
             {cantina.observacoes.length > 0 && (
-              <div className="mb-4 mt-4">
+              <div className="mb-5 mt-4">
                 {cantina.observacoes.map((obs) => (
                   <p key={obs.id} className="mb-2">
                     <strong>

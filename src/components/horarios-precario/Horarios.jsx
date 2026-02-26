@@ -29,7 +29,7 @@ function Horarios({ horarios }) {
               ))}
             </tbody>
           </table>
-          <p className=" mb-4">
+          <p className=" mb-5 mt-4">
             <strong>Localização:</strong> {cantina.localizacao}
           </p>
         </div>
