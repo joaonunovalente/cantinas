@@ -1,51 +1,3 @@
-function MainContent({ activeTab, ementas }) {
-  const canteenMap = {
-    santiago: "Santiago",
-    grelhados: "Grelhados",
-    crasto: "Crasto",
-    estga: "ESTGA",
-    universitario: "Restaurante Universitário",
-  };
-
-  const selectedCanteen = canteenMap[activeTab];
-
-  const canteenMeals = ementas.filter((entry) =>
-    entry.Refeitorios.includes(selectedCanteen),
-  );
-
-  const groupByPeriod = (period) =>
-    canteenMeals.filter((m) => m.Periodo === period);
-
-  return (
-    <section className="theme-section">
-      <div className="container">
-        <div className="row g-4 align-items-stretch">
-          <MealCard title="Almoço" items={groupByPeriod("Almoço")} />
-          <MealCard title="Jantar" items={groupByPeriod("Jantar")} />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function MealCard({ title, items }) {
-  return (
-    <div className="col-12 col-md-6 d-flex">
-      <div className="item-inner shadow rounded-4 p-4 w-100 d-flex flex-column">
-        <h3 className="item-heading mb-4">{title}</h3>
-
-        <div className="item-desc flex-grow-1">
-          {items.length === 0 ? (
-            <p className="mb-0">Encontra-se encerrado.</p>
-          ) : (
-            formatMenu(items)
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function formatMenu(items) {
   const groupedByNome = {};
 
@@ -99,4 +51,4 @@ function formatMenu(items) {
   );
 }
 
-export default MainContent;
+export default formatMenu

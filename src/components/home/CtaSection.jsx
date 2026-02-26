@@ -1,6 +1,6 @@
 function CtaSection() {
   return (
-    <section className="help-cta-section theme-section text-start text-md-center py-lg-5 py-4 mb-5">
+    <section className="help-cta-section theme-section text-start text-md-center py-lg-5 py-4 mb-5 container">
       <div className="container">
         <div className="section-inner position-relative theme-bg-dark rounded-4 p-5 p-lg-5 overflow-hidden">
           <div className="bg-pattern-holder z-0">
