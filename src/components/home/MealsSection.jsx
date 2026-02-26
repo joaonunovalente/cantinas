@@ -1,18 +1,21 @@
-import MealCard from "../common/MealCard"
+import MealCard from "../common/MealCard";
+import SectionHeaderTitle from "../common/SectionHeaderTitle";
 
 function MealsSection({ activeTab, ementas }) {
   const canteenMap = {
-    santiago: "Santiago",
-    grelhados: "Grelhados",
-    crasto: "Crasto",
-    estga: "ESTGA",
-    universitario: "Restaurante Universitário",
+    santiago: { tag: "Santiago", nome: "Cantina de Santiago" },
+    crasto: { tag: "Crasto", nome: "Cantina do Crasto" },
+    grelhados: { tag: "Grelhados", nome: "Campi Grelhados" },
+    estga: { tag: "ESTGA", nome: "Cantina da ESTGA" },
+    universitario: {tag: "Restaurante Universitário", nome: "Restaurante Universitário" },
   };
 
   const selectedCanteen = canteenMap[activeTab];
 
+  if (!selectedCanteen) return null;
+
   const canteenMeals = ementas.filter((entry) =>
-    entry.Refeitorios.includes(selectedCanteen),
+    entry.Refeitorios.includes(selectedCanteen.tag)
   );
 
   const groupByPeriod = (period) =>
@@ -21,8 +24,9 @@ function MealsSection({ activeTab, ementas }) {
   return (
     <main className="container">
       <section className="theme-section">
+        <SectionHeaderTitle title={selectedCanteen.nome} />
         <div className="container">
-          <div className="row g-4 align-items-stretch">
+          <div className="row g-4 align-items-stretch mt-3">
             <MealCard title="Almoço" items={groupByPeriod("Almoço")} />
             <MealCard title="Jantar" items={groupByPeriod("Jantar")} />
           </div>
@@ -31,4 +35,5 @@ function MealsSection({ activeTab, ementas }) {
     </main>
   );
 }
+
 export default MealsSection;
