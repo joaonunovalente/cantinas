@@ -2,7 +2,6 @@ import { useState } from "react";
 import PageLayout from "../layouts/PageLayout";
 import Hero from "../components/home/Hero";
 import MealsSection from "../components/home/MealsSection";
-import CtaSection from "../components/home/CtaSection";
 
 import ementas from "../data/ementas";
 
@@ -23,7 +22,6 @@ function HomePage() {
       }
     >
       <MealsSection activeTab={activeTab} ementas={ementas} />
-      <CtaSection />
     </PageLayout>
   );
 }
