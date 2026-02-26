@@ -97,3 +97,9 @@
     width: 40%;
   }
 }
+
+@media (max-width: 991px) {
+  .nav-pills .nav-item {
+    margin: 8px 0px 8px 0px;
+  }
+}
