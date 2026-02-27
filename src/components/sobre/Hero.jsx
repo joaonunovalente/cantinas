@@ -1,6 +1,4 @@
-import SearchForm from '../common/SearchForm';
-
-function Hero({ title = 'Sobre o Cantinas.pt', description = 'Find articles and resources to help with your questions.' }) {
+function Hero({ title = 'Sobre o Cantinas.pt', description = 'Fica a conhecer melhor o projecto Cantinas.pt ' }) {
   return (
     <div className="page-heading-holder">
       <div className="container text-center">
