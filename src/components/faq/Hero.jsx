@@ -8,7 +8,6 @@ function Hero({ title = 'Perguntas Frequentes', description = 'Find articles and
         <div className="page-heading-sub single-col-max mx-auto">
           <div className="help-search-intro">{description}</div>
           <div className="help-search-main pt-3 d-block mx-auto">
-            <SearchForm />
           </div>
         </div>
       </div>
