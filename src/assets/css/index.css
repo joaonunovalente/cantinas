@@ -1,3 +1,17 @@
+.site-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-main {
+  flex: 1 0 auto;
+}
+
+.footer {
+  margin-top: auto;
+}
+
 .hyperlink {
   filter: brightness(0) invert(0.2);
   width: 14px;
