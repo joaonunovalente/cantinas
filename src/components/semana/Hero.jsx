@@ -1,15 +1,21 @@
-import SearchForm from '../common/SearchForm';
+import Tabs from "../common/Tabs";
 
-function Hero({ title = 'Semana', description = 'Find articles and resources to help with your questions.' }) {
+function Hero({
+  title = "Ementas da Universidade de Aveiro",
+  description = "Consulta as ementas disponíveis  nas cantinas da Universidade de Aveiro.",
+  tabs = [],
+  activeTab,
+  onTabChange,
+}) {
   return (
     <div className="page-heading-holder">
       <div className="container text-center">
         <h1 className="page-heading mb-3">{title}</h1>
-        <div className="page-heading-sub single-col-max mx-auto">
-          <div className="help-search-intro">{description}</div>
-          <div className="help-search-main pt-3 d-block mx-auto">
-            <SearchForm />
-          </div>
+        <div className="">
+          {description}
+        </div>
+        <div className="pt-3">
+          <Tabs tabs={tabs} activeTabId={activeTab} onTabChange={onTabChange} />
         </div>
       </div>
     </div>
