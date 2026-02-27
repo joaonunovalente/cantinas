@@ -3,7 +3,7 @@ import SectionHeaderTitle from "../common/SectionHeaderTitle";
 function MainContent() {
   return (
     <main className="container">
-      <section className="theme-section">
+      <section className="theme-section container">
         <SectionHeaderTitle title="Sobre o Cantinas.pt" />
 
         <div className="row justify-content-center mb-0">
