@@ -1,6 +1,6 @@
 import SearchForm from "../common/SearchForm"
 
-function Hero({ title = 'Mais Informações', description = 'Entra em contacto para sugestões, problemas técnicos ou pedidos de informação.' }) {
+function Hero({ title = 'Mais Informações', description = 'Podes encontrar mais informações e entrar em contacto com o Cantinas.pt' }) {
   return (
     <div className="page-heading-holder">
       <div className="container text-center">
