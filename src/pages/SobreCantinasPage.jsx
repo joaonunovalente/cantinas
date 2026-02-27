@@ -1,13 +1,13 @@
-import PageLayout from "../layouts/PageLayout";
+import Article from "../components/common/Article";
 
-import Hero from "../components/sobre/Hero";
+import Hero from "../components/article/Hero";
 import MainContent from "../components/sobre/MainContent";
 
 function SobreCantinasPage() {
   return (
-    <PageLayout hero={<Hero />}>
+    <Article hero={<Hero />}>
       <MainContent />
-    </PageLayout>
+    </Article>
   );
 }
 
