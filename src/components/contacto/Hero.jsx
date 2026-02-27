@@ -1,6 +1,4 @@
-import SearchForm from '../common/SearchForm';
-
-function Hero({ title = 'Contacto', description = 'Find articles and resources to help with your questions.' }) {
+function Hero({ title = 'Contacto', description = 'Encontra informações sobre o Cantinas.pt' }) {
   return (
     <div className="page-heading-holder">
       <div className="container text-center">
@@ -8,7 +6,6 @@ function Hero({ title = 'Contacto', description = 'Find articles and resources t
         <div className="page-heading-sub single-col-max mx-auto">
           <div className="help-search-intro">{description}</div>
           <div className="help-search-main pt-3 d-block mx-auto">
-            <SearchForm />
           </div>
         </div>
       </div>
