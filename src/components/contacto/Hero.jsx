@@ -1,4 +1,4 @@
-function Hero({ title = 'Contacto', description = 'Encontra informações sobre o Cantinas.pt' }) {
+function Hero({ title = 'Contacto', description = 'Entra em contacto para sugestões, problemas técnicos ou pedidos de informação.' }) {
   return (
     <div className="page-heading-holder">
       <div className="container text-center">
