@@ -3,7 +3,7 @@ import ArticleContentMainSection from './article-content/ArticleContentMainSecti
 
 function ArticleContent() {
   return (
-    <article className="help-article mb-5">
+    <article className="help-article ">
       <ArticleContentHeader />
       <ArticleContentMainSection />
     </article>

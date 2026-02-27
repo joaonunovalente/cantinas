@@ -3,12 +3,12 @@ import SectionHeaderTitle from "../common/SectionHeaderTitle";
 function MainContent() {
   return (
     <main className="container">
-      <section className="theme-section container">
+      <section className="container">
         <SectionHeaderTitle title="Formulário de Contacto" />
 
-        <div className="">
+        <div>
           <div className="row justify-content-center">
-            <div className="col-lg-6">
+            <div className="col-lg-10">
 
               <p className="mb-5">
                 Caso queiras entrar em contacto com o{" "}

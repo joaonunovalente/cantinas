@@ -1,13 +1,13 @@
-import PageLayout from "../layouts/PageLayout";
+import Article from "../components/common/Article";
 
-import Hero from "../components/contacto/Hero";
+import Hero from "../components/article/Hero";
 import MainContent from "../components/contacto/MainContent";
 
 function ContactoPage() {
   return (
-    <PageLayout hero={<Hero />}>
+    <Article hero={<Hero />}>
       <MainContent />
-    </PageLayout>
+    </Article>
   );
 }
 
