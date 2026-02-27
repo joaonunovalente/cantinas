@@ -1,6 +1,6 @@
 import Article from "../components/common/Article";
 
-import Hero from "../components/article/Hero";
+import Hero from "../components/faq/Hero";
 import MainContent from "../components/faq/MainContent";
 
 function FaqPage() {
