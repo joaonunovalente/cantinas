@@ -7,7 +7,7 @@ function Article({ hero, children }) {
       <div className="m-4"></div>
 
       <div className="help-content-wrapper py-5 container">
-        <div className="row align-items-start">
+        <div className="row gy-5">
           <div className="col-12 col-lg-2 order-2 order-lg-1 mb-4 mb-lg-0">
             <ArticleSidebar />
           </div>

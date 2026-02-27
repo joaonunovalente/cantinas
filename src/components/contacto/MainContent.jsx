@@ -3,7 +3,7 @@ import SectionHeaderTitle from "../common/SectionHeaderTitle";
 function MainContent() {
   return (
     <main className="container">
-      <section className="container">
+      <section>
         <SectionHeaderTitle title="Formulário de Contacto" />
 
         <div>
