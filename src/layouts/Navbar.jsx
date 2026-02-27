@@ -50,7 +50,7 @@ function Navbar() {
                   Horários e Preçário
                 </NavLink>
               </li>
-              <li className="nav-item dropdown me-lg-4">
+              {/* <li className="nav-item dropdown me-lg-4">
                 <a
                   className="nav-link dropdown-toggle"
                   href="#"
@@ -69,7 +69,7 @@ function Navbar() {
                     </li>
                   ))}
                 </ul>
-              </li>
+              </li> */}
               <li className="nav-item dropdown me-lg-4">
                 <a
                   className="nav-link dropdown-toggle"
@@ -105,7 +105,7 @@ function Navbar() {
                       />
                     </a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a
                       className="dropdown-item"
                       href="https://blog.cantinas.pt/"
@@ -121,7 +121,7 @@ function Navbar() {
                         alt="Ligação para o Blog do Cantinas.pt"
                       />
                     </a>
-                  </li>
+                  </li> */}
                 </ul>
               </li>
             </ul>
