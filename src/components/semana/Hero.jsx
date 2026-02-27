@@ -1,7 +1,7 @@
 import Tabs from "../common/Tabs";
 
 function Hero({
-  title = "Ementas da Universidade de Aveiro",
+  title = "Semana",
   description = "Consulta as ementas disponíveis  nas cantinas da Universidade de Aveiro.",
   tabs = [],
   activeTab,
