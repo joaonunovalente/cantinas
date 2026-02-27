@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import sidebarCategories from "../../data/popularArticles";
+import sidebarCategories from "../../data/maisInformacoes";
 
 function ArticleSidebar() {
   return (
