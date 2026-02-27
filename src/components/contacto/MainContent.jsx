@@ -3,7 +3,7 @@ import SectionHeaderTitle from "../common/SectionHeaderTitle";
 function MainContent() {
   return (
     <section>
-      <SectionHeaderTitle title="Formulário de Contacto" />
+      <SectionHeaderTitle title="Contacto" />
 
       <div>
         <div className="row justify-content-center">

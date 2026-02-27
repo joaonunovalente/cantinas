@@ -2,20 +2,18 @@ import SectionHeaderTitle from "../common/SectionHeaderTitle";
 
 function MainContent() {
   return (
-    <main className="container">
-      <section className="theme-section container">
-        <SectionHeaderTitle title="Perguntas Frequentes" />
+    <section>
+      <SectionHeaderTitle title="Perguntas Frequentes" />
 
+      <div>
         <div className="row justify-content-center">
-          <div className="col-lg-8">
-
+          <div className="col-lg-10">
             <p className="mb-0">
               Encontra aqui as respostas às dúvidas mais comuns sobre o{" "}
               <strong>Cantinas.pt</strong>.
             </p>
 
             <div className="accordion pt-5" id="faqAccordion">
-
               <div className="accordion-item">
                 <h2 className="accordion-header">
                   <button
@@ -24,7 +22,8 @@ function MainContent() {
                     data-bs-toggle="collapse"
                     data-bs-target="#faq1"
                   >
-                    O Cantinas.pt é um website oficial da Universidade de Aveiro?
+                    O Cantinas.pt é um website oficial da Universidade de
+                    Aveiro?
                   </button>
                 </h2>
                 <div
@@ -33,8 +32,9 @@ function MainContent() {
                   data-bs-parent="#faqAccordion"
                 >
                   <div className="accordion-body">
-                    Não. O <strong>Cantinas.pt</strong> é um projeto independente que
-                    apenas facilita o acesso à informação pública das ementas.
+                    Não. O <strong>Cantinas.pt</strong> é um projeto
+                    independente que apenas facilita o acesso à informação
+                    pública das ementas.
                   </div>
                 </div>
               </div>
@@ -87,10 +87,14 @@ function MainContent() {
                 >
                   <div className="accordion-body">
                     <p>
-                      O objetivo é manter a informação atualizada, mas é possível que haja algum desfasamento.
+                      O objetivo é manter a informação atualizada, mas é
+                      possível que haja algum desfasamento.
                     </p>
                     Nesse caso, preenche o formulário ou envia um email para{" "}
-                    <a href="mailto:contacto@cantinas.pt" className="fw-semibold">
+                    <a
+                      href="mailto:contacto@cantinas.pt"
+                      className="fw-semibold"
+                    >
                       contacto@cantinas.pt
                     </a>{" "}
                     para que se possa corrigir.
@@ -116,11 +120,14 @@ function MainContent() {
                 >
                   <div className="accordion-body">
                     <p>
-                      Isso é algo completamente alheio ao <strong>Cantinas.pt</strong>. As
-                      ementas são obtidas diretamente dos dados fornecidos pela Universidade
-                      de Aveiro.
+                      Isso é algo completamente alheio ao{" "}
+                      <strong>Cantinas.pt</strong>. As ementas são obtidas
+                      diretamente dos dados fornecidos pela Universidade de
+                      Aveiro.
                     </p>
-                    Não é da responsabilidade do <strong>Cantinas.pt</strong> educar terceiros a acentuar devidamente o vasto léxico que compõe a língua portuguesa.
+                    Não é da responsabilidade do <strong>Cantinas.pt</strong>{" "}
+                    educar terceiros a acentuar devidamente o vasto léxico que
+                    compõe a língua portuguesa.
                   </div>
                 </div>
               </div>
@@ -142,7 +149,8 @@ function MainContent() {
                   data-bs-parent="#faqAccordion"
                 >
                   <div className="accordion-body">
-                    Não está prevista uma versão em inglês, uma vez que as ementas não são disponibilizadas nesse idioma.
+                    Não está prevista uma versão em inglês, uma vez que as
+                    ementas não são disponibilizadas nesse idioma.
                   </div>
                 </div>
               </div>
@@ -165,9 +173,13 @@ function MainContent() {
                 >
                   <div className="accordion-body">
                     Sim, preenche o formulário ou envia um email para{" "}
-                    <a href="mailto:contacto@cantinas.pt" className="fw-semibold">
+                    <a
+                      href="mailto:contacto@cantinas.pt"
+                      className="fw-semibold"
+                    >
                       contacto@cantinas.pt
-                    </a>.
+                    </a>
+                    .
                   </div>
                 </div>
               </div>
@@ -191,18 +203,25 @@ function MainContent() {
                   <div className="accordion-body">
                     <p>Existem três motivos possíveis:</p>
                     <ul>
-                      <li>Os serviços gerais da universidade estão indisponíveis.</li>
+                      <li>
+                        Os serviços gerais da universidade estão indisponíveis.
+                      </li>
                       <li>O serviço das ementas está indisponível.</li>
                       <li>As ementas, simplesmente, não estão a carregar.</li>
                     </ul>
                     <p>
-                      Nos dois primeiros casos não há nada que se possa fazer, senão esperar.
+                      Nos dois primeiros casos não há nada que se possa fazer,
+                      senão esperar.
                     </p>
-                    Se achares que é o terceiro motivo, preenche o formulário ou envia
-                    um email para{" "}
-                    <a href="mailto:contacto@cantinas.pt" className="fw-semibold">
+                    Se achares que é o terceiro motivo, preenche o formulário ou
+                    envia um email para{" "}
+                    <a
+                      href="mailto:contacto@cantinas.pt"
+                      className="fw-semibold"
+                    >
                       contacto@cantinas.pt
-                    </a>.
+                    </a>
+                    .
                   </div>
                 </div>
               </div>
@@ -215,7 +234,8 @@ function MainContent() {
                     data-bs-toggle="collapse"
                     data-bs-target="#faq15"
                   >
-                    Por vezes, as ementas ficam "A carregar a ementa..." durante imenso tempo.
+                    Por vezes, as ementas ficam "A carregar a ementa..." durante
+                    imenso tempo.
                   </button>
                 </h2>
                 <div
@@ -225,12 +245,21 @@ function MainContent() {
                 >
                   <div className="accordion-body">
                     <p>
-                      Quando a duração ultrapassa 5 segundos, os dados estão a ser obtidos <i>quase</i> diretamente da API da universidade.
+                      Quando a duração ultrapassa 5 segundos, os dados estão a
+                      ser obtidos <i>quase</i> diretamente da API da
+                      universidade.
                     </p>
                     <p>
-                      Explicando melhor: a API da universidade demora cerca de 5 segundos a responder a um pedido de ementas. Para reduzir esse tempo, o <strong>Cantinas.pt</strong> guarda as ementas do dia. Assim, os utilizadores não precisam de esperar tanto tempo.
+                      Explicando melhor: a API da universidade demora cerca de 5
+                      segundos a responder a um pedido de ementas. Para reduzir
+                      esse tempo, o <strong>Cantinas.pt</strong> guarda as
+                      ementas do dia. Assim, os utilizadores não precisam de
+                      esperar tanto tempo.
                     </p>
-                    Ocasionalmente, a API do <strong>Cantinas.pt</strong> não consegue satisfazer os pedidos apenas com os dados guardados. Nesses casos, é necessário comunicar novamente com a API da universidade.
+                    Ocasionalmente, a API do <strong>Cantinas.pt</strong> não
+                    consegue satisfazer os pedidos apenas com os dados
+                    guardados. Nesses casos, é necessário comunicar novamente
+                    com a API da universidade.
                   </div>
                 </div>
               </div>
@@ -243,7 +272,8 @@ function MainContent() {
                     data-bs-toggle="collapse"
                     data-bs-target="#faq13"
                   >
-                    Enviei uma mensagem através do formulário e não obtive resposta...
+                    Enviei uma mensagem através do formulário e não obtive
+                    resposta...
                   </button>
                 </h2>
                 <div
@@ -255,10 +285,13 @@ function MainContent() {
                     <p>É possivel que seja um dos seguinte motivos:</p>
                     <ul>
                       <li>
-                        Não escreveste bem o teu email quando preencheste o formulário. E, consequentemente, não foi possível fazer-te chegar a resposta.
+                        Não escreveste bem o teu email quando preencheste o
+                        formulário. E, consequentemente, não foi possível
+                        fazer-te chegar a resposta.
                       </li>
                       <li>
-                        Falta de tempo. Não precisas de enviar uma nova mensagem, se for este o caso.
+                        Falta de tempo. Não precisas de enviar uma nova
+                        mensagem, se for este o caso.
                       </li>
                     </ul>
                   </div>
@@ -301,11 +334,15 @@ function MainContent() {
                         rel="noopener noreferrer"
                       >
                         JSON
-                      </a>.
+                      </a>
+                      .
                     </p>
-                    <p>Este ficheiro tem mais informações para além das ementas.</p>
                     <p>
-                      Nomeadamente, os alergénios presentes (ex: glúten, ovos, soja, leite, aipo, mostarda, sulfitos).
+                      Este ficheiro tem mais informações para além das ementas.
+                    </p>
+                    <p>
+                      Nomeadamente, os alergénios presentes (ex: glúten, ovos,
+                      soja, leite, aipo, mostarda, sulfitos).
                     </p>
                     Boa sorte!
                   </div>
@@ -331,7 +368,11 @@ function MainContent() {
                   <div className="accordion-body">
                     <p>
                       Existe um projeto do{" "}
-                      <a href="https://glua.ua.pt/" target="_blank" rel="noopener noreferrer">
+                      <a
+                        href="https://glua.ua.pt/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         GLUA
                       </a>{" "}
                       (Grupo de Linux da Universidade de Aveiro) no{" "}
@@ -342,14 +383,25 @@ function MainContent() {
                       >
                         GitHub
                       </a>
-                      , que faz precisamente o que o <strong>Cantinas.pt</strong> se propõe a fazer, mas focado apenas no sistema operativo{" "}
-                      <a href="https://www.zorinos.com/" target="_blank" rel="noopener noreferrer">
+                      , que faz precisamente o que o{" "}
+                      <strong>Cantinas.pt</strong> se propõe a fazer, mas focado
+                      apenas no sistema operativo{" "}
+                      <a
+                        href="https://www.zorinos.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         Linux
-                      </a>.
+                      </a>
+                      .
                     </p>
-                    <p>Então, porque não criar uma opção mais acessível para todos?</p>
+                    <p>
+                      Então, porque não criar uma opção mais acessível para
+                      todos?
+                    </p>
                     <i>
-                      O Homem quer, o Homem sonha, o <strong>Cantinas.pt</strong> nasce!
+                      O Homem quer, o Homem sonha, o{" "}
+                      <strong>Cantinas.pt</strong> nasce!
                     </i>
                   </div>
                 </div>
@@ -373,12 +425,19 @@ function MainContent() {
                 >
                   <div className="accordion-body">
                     <p>
-                      A melhor forma passa por partilhares com os teus colegas e amigos este projeto.
+                      A melhor forma passa por partilhares com os teus colegas e
+                      amigos este projeto.
                     </p>
-                    Se tiveres conhecimentos técnicos e queiras ajudar em algum assunto, podes sempre entrar em contacto através do formulário ou enviar um email para{" "}
-                    <a href="mailto:contacto@cantinas.pt" className="fw-semibold">
+                    Se tiveres conhecimentos técnicos e queiras ajudar em algum
+                    assunto, podes sempre entrar em contacto através do
+                    formulário ou enviar um email para{" "}
+                    <a
+                      href="mailto:contacto@cantinas.pt"
+                      className="fw-semibold"
+                    >
                       contacto@cantinas.pt
-                    </a>.
+                    </a>
+                    .
                   </div>
                 </div>
               </div>
@@ -400,18 +459,22 @@ function MainContent() {
                   data-bs-parent="#faqAccordion"
                 >
                   <div className="accordion-body">
-                    <a href="https://caninas.pt" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://caninas.pt"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       Sim
-                    </a>.
+                    </a>
+                    .
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
   );
 }
 

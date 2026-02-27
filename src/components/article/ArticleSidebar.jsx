@@ -3,7 +3,7 @@ import maisInformacoes from "../../data/maisInformacoes";
 
 function ArticleSidebar() {
   return (
-    <div className="side-bar sticky">
+    <div className="side-bar sticky mt-1">
       <h3 className="side-bar-heading mb-4">Mais Informações</h3>
       <nav className="side-bar-nav">
         <ul className="sidebar-nav-items list-unstyled flex-column">
