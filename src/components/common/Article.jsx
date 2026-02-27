@@ -4,18 +4,16 @@ import ArticleSidebar from "../article/ArticleSidebar";
 function Article({ hero, children }) {
   return (
     <PageLayout hero={hero}>
-      <div className="m-5"></div>
+      <div className="m-4"></div>
 
-      <div className="help-content-wrapper theme-section pt-4 container">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 col-xl-9">
-              <section className="main-section">{children}</section>
-            </div>
+      <div className="help-content-wrapper py-5 container">
+        <div className="row align-items-start">
+          <div className="col-12 col-lg-2 order-2 order-lg-1 mb-4 mb-lg-0">
+            <ArticleSidebar />
+          </div>
 
-            <div className="col-lg-4 col-xl-3 order-lg-first ps-4 p-md-0">
-              <ArticleSidebar />
-            </div>
+          <div className="col-12 col-lg-8 order-1 order-lg-2">
+            <section>{children}</section>
           </div>
         </div>
       </div>
