@@ -1,6 +1,6 @@
 import Article from "../components/common/Article";
 
-import Hero from "../components/article/Hero";
+import Hero from "../components/contacto/Hero";
 import MainContent from "../components/contacto/MainContent";
 
 function ContactoPage() {

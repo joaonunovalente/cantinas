@@ -1,13 +1,17 @@
+import { useState } from "react";
 import PageLayout from "../layouts/PageLayout";
 import ArticleSidebar from "../components/article/ArticleSidebar";
 import ArticleContent from "../components/article/ArticleContent";
 
 import Hero from "../components/article/Hero";
 
-
 function ArticlePage() {
+  const [searchValue, setSearchValue] = useState("");
+
   return (
-    <PageLayout hero={<Hero />}>
+    <PageLayout
+      hero={<Hero searchValue={searchValue} onSearchValueChange={setSearchValue} />}
+    >
       <div className="m-5"></div>
 
       <div className="help-content-wrapper theme-section pt-4 container">
@@ -20,7 +24,7 @@ function ArticlePage() {
             </div>
 
             <div className="col-lg-4 col-xl-3 order-lg-first ps-4 p-md-0">
-              <ArticleSidebar />
+              <ArticleSidebar searchValue={searchValue} />
             </div>
           </div>
         </div>
