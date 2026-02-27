@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PageLayout from "../layouts/PageLayout";
 import Hero from "../components/home/Hero";
 import MealsSection from "../components/home/MealsSection";
 
-import ementas from "../data/ementas";
-
 function HomePage() {
   const [activeTab, setActiveTab] = useState("santiago");
+  const [ementas, setEmentas] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const tabs = [
     { id: "santiago", label: "Santiago" },
     { id: "crasto", label: "Crasto" },
@@ -15,13 +16,38 @@ function HomePage() {
     { id: "universitario", label: "Restaurante Universitário" },
   ];
 
+  useEffect(() => {
+    const fetchEmentas = async () => {
+      const today = new Date().toISOString().split("T")[0];
+      const url = `https://api.cantinas.pt/?date=${today}`;
+
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("Erro ao carregar ementas");
+        const data = await res.json();
+        setEmentas(data);
+      } catch (err) {
+        console.error(err);
+        setEmentas([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEmentas();
+  }, []);
+
   return (
     <PageLayout
       hero={
         <Hero tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
       }
     >
-      <MealsSection activeTab={activeTab} ementas={ementas} />
+      <MealsSection
+        activeTab={activeTab}
+        ementas={ementas}
+        loading={loading}
+      />
     </PageLayout>
   );
 }
