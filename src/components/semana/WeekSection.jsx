@@ -56,12 +56,14 @@ function WeekSection({ activeTab }) {
   }
 
   function capitalize(str) {
-    return str ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() : "";
+    return str
+      ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+      : "";
   }
 
   function generateMenuHTML(items) {
     if (!items || items.length === 0) {
-      return "<p class='text-muted'>Não existem ementas disponíveis.</p>";
+      return "<p class='text-muted'>Encontra-se encerrado.</p>";
     }
 
     let html = "";
@@ -70,7 +72,7 @@ function WeekSection({ activeTab }) {
     items.forEach((i) =>
       i.Componentes.forEach((c) => {
         if (c.TipoString === "Sopa") soups.add(capitalize(c.Nome));
-      }),
+      })
     );
 
     if (soups.size) {
@@ -78,7 +80,9 @@ function WeekSection({ activeTab }) {
     }
 
     items.forEach((item) => {
-      const pratos = item.Componentes.filter((c) => c.TipoString === "Prato");
+      const pratos = item.Componentes.filter(
+        (c) => c.TipoString === "Prato"
+      );
       if (!pratos.length) return;
 
       let label = "Prato";
@@ -96,17 +100,14 @@ function WeekSection({ activeTab }) {
         .join("; ")}</p>`;
     });
 
-    return html || "<p class='text-muted'>Não existem ementas disponíveis.</p>";
+    return html || "<p class='text-muted'>Encontra-se encerrado.</p>";
   }
 
   useEffect(() => {
     if (!loading) return;
 
     const interval = setInterval(() => {
-      setDots((prev) => {
-        if (prev.length >= 3) return ".";
-        return prev + ".";
-      });
+      setDots((prev) => (prev.length >= 3 ? "." : prev + "."));
     }, 500);
 
     return () => clearInterval(interval);
@@ -117,7 +118,9 @@ function WeekSection({ activeTab }) {
       const requests = Array.from({ length: 7 }, (_, i) => {
         const date = getRollingDate(i);
 
-        return fetch(`https://api.cantinas.pt/?date=${formatDate(date)}`)
+        return fetch(
+          `https://api.cantinas.pt/?date=${formatDate(date)}`
+        )
           .then((res) => res.json())
           .then((data) => ({
             date,
@@ -140,92 +143,101 @@ function WeekSection({ activeTab }) {
   if (!selectedCanteen) return null;
 
   const normalizedSelected = normalizeString(selectedCanteen.tag);
-
   const todayIndex = new Date().getDay();
+
+  // Se a API não devolveu absolutamente nenhum dia
+  const apiReturnedNothing = !weekData.some((d) => d.data && d.data.length > 0);
 
   return (
     <main className="container">
       <section className="theme-section section-header help-category-section">
         <div className="container">
-          {loading &&
-            (() => {
-              const todayName = weekdayNames[todayIndex];
+          {loading && (
+            <div className="day-block mb-5">
+              <div className="section-header text-center mb-5">
+                <h2 className="section-title mb-3">
+                  {weekdayNames[todayIndex]}
+                </h2>
+              </div>
 
-              return (
-                <div className="day-block mb-5">
-                  <div className="section-header text-center mb-5">
-                    <h2 className="section-title mb-3">{todayName}</h2>
-                  </div>
-
-                  <div className="row">
-                    <div className="col-12 col-md-6 py-4">
-                      <div className="item-inner shadow rounded-4 p-4 h-100">
-                        <h3 className="item-heading mb-4">Almoço</h3>
-                        <p>A carregar ementas{dots}</p>
-                      </div>
-                    </div>
-
-                    <div className="col-12 col-md-6 py-4">
-                      <div className="item-inner shadow rounded-4 p-4 h-100">
-                        <h3 className="item-heading mb-4">Jantar</h3>
-                        <p>A carregar ementas{dots}</p>
-                      </div>
-                    </div>
+              <div className="row">
+                <div className="col-12 col-md-6 py-4">
+                  <div className="item-inner shadow rounded-4 p-4 h-100">
+                    <h3 className="item-heading mb-4">Almoço</h3>
+                    <p>A carregar ementas{dots}</p>
                   </div>
                 </div>
-              );
-            })()}
+
+                <div className="col-12 col-md-6 py-4">
+                  <div className="item-inner shadow rounded-4 p-4 h-100">
+                    <h3 className="item-heading mb-4">Jantar</h3>
+                    <p>A carregar ementas{dots}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {!loading && apiReturnedNothing && (
+            <p className="text-muted">Não existem ementas disponíveis.</p>
+          )}
 
           {!loading &&
-            weekData.map((day, index) => {
-              const meals = (day.data || []).filter((m) =>
-                m.Refeitorios.some(
-                  (r) => normalizeString(r) === normalizedSelected,
-                ),
-              );
+            weekData
+              .filter((day) => day.data && day.data.length > 0)
+              .map((day, index) => {
+                const meals = day.data.filter((m) =>
+                  m.Refeitorios.some(
+                    (r) => normalizeString(r) === normalizedSelected
+                  )
+                );
 
-              const grouped = groupByPeriod(meals);
+                const grouped = groupByPeriod(meals);
 
-              return (
-                <div className="day-block mb-5" key={index}>
-                  <div className="section-header text-center mb-5">
-                    <h2 className="section-title mb-3">
-                      {weekdayNames[day.date.getDay()]}
-                    </h2>
-                  </div>
-
-                  <div className="row">
-                    <div className="col-12 col-md-6 py-4">
-                      <div className="item-inner shadow rounded-4 p-4 h-100">
-                        <h3 className="item-heading mb-4">Almoço</h3>
-                        <div
-                          dangerouslySetInnerHTML={{
-                            __html:
-                              grouped["Almoço"] && grouped["Almoço"].length > 0
-                                ? generateMenuHTML(grouped["Almoço"])
-                                : "<p class='text-muted'>Não existem ementas disponíveis.</p>",
-                          }}
-                        />
-                      </div>
+                return (
+                  <div className="day-block mb-5" key={index}>
+                    <div className="section-header text-center mb-5">
+                      <h2 className="section-title mb-3">
+                        {weekdayNames[day.date.getDay()]}
+                      </h2>
                     </div>
 
-                    <div className="col-12 col-md-6 py-4">
-                      <div className="item-inner shadow rounded-4 p-4 h-100">
-                        <h3 className="item-heading mb-4">Jantar</h3>
-                        <div
-                          dangerouslySetInnerHTML={{
-                            __html:
-                              grouped["Jantar"] && grouped["Jantar"].length > 0
-                                ? generateMenuHTML(grouped["Jantar"])
-                                : "<p class='text-muted'>Não existem ementas disponíveis.</p>",
-                          }}
-                        />
+                    <div className="row">
+                      {/* Almoço */}
+                      <div className="col-12 col-md-6 py-4">
+                        <div className="item-inner shadow rounded-4 p-4 h-100">
+                          <h3 className="item-heading mb-4">Almoço</h3>
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html:
+                                grouped["Almoço"] &&
+                                grouped["Almoço"].length > 0
+                                  ? generateMenuHTML(grouped["Almoço"])
+                                  : "<p class='text-muted'>Encontra-se encerrado.</p>",
+                            }}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Jantar */}
+                      <div className="col-12 col-md-6 py-4">
+                        <div className="item-inner shadow rounded-4 p-4 h-100">
+                          <h3 className="item-heading mb-4">Jantar</h3>
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html:
+                                grouped["Jantar"] &&
+                                grouped["Jantar"].length > 0
+                                  ? generateMenuHTML(grouped["Jantar"])
+                                  : "<p class='text-muted'>Encontra-se encerrado.</p>",
+                            }}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
         </div>
       </section>
     </main>
