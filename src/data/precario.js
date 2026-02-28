@@ -71,7 +71,9 @@ const precario = [
     precos: [
       { id: "vegetariano-1", tipo: "Refeição Vegetariana", descricao: "Buffet tudo incluído", preco: "6,60\u00A0€" },
     ],
-    observacoes: [],
+    observacoes: [
+      { id: "obs1", ref: " ", texto: " " },
+    ],
   },
   {
     id: "cantina-estga",
