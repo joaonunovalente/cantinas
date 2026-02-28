@@ -4,6 +4,50 @@ import faqData from "../../data/faqData";
 function MainContent() {
   const { title, description, faqs } = faqData[0];
 
+  function renderInline(part, key) {
+    if (typeof part === "string") return part;
+
+    switch (part.type) {
+      case "text":
+        return part.value;
+
+      case "bold":
+        return <strong key={key}>{part.value}</strong>;
+
+      case "italic":
+        return <em key={key}>{part.value}</em>;
+
+      case "link":
+        return (
+          <a
+            key={key}
+            href={part.href}
+            target={part.href.startsWith("mailto:") ? undefined : "_blank"}
+            rel={
+              part.href.startsWith("mailto:")
+                ? undefined
+                : "noopener noreferrer"
+            }
+            className="fw-semibold"
+          >
+            {part.label}
+          </a>
+        );
+
+      case "code":
+        return (
+          <code key={key}>
+            <a href={part.href} target="_blank" rel="noopener noreferrer">
+              {part.value}
+            </a>
+          </code>
+        );
+
+      default:
+        return null;
+    }
+  }
+
   return (
     <section>
       <SectionHeaderTitle title={title} />
@@ -37,9 +81,29 @@ function MainContent() {
                     data-bs-parent="#faqAccordion"
                   >
                     <div className="accordion-body">
-                      {item.answer.map((paragraph, i) => (
-                        <p key={i}>{paragraph}</p>
-                      ))}
+                      {item.answer.map((block, i) => {
+                        if (block.type === "paragraph") {
+                          return (
+                            <p key={i}>
+                              {Array.isArray(block.content)
+                                ? block.content.map(renderInline)
+                                : block.content}
+                            </p>
+                          );
+                        }
+
+                        if (block.type === "list") {
+                          return (
+                            <ul key={i}>
+                              {block.items.map((li, j) => (
+                                <li key={j}>{li}</li>
+                              ))}
+                            </ul>
+                          );
+                        }
+
+                        return null;
+                      })}
                     </div>
                   </div>
                 </div>
