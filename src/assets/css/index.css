@@ -117,3 +117,20 @@
     margin: 8px 0px 8px 0px;
   }
 }
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1rem;
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.footer-link:hover{
+  color: #53B656;
+}
