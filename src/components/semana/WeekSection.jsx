@@ -24,6 +24,7 @@ function WeekSection({ activeTab }) {
 
   const [weekData, setWeekData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [dots, setDots] = useState(".");
 
   const selectedCanteen = canteenMap[activeTab];
 
@@ -55,9 +56,7 @@ function WeekSection({ activeTab }) {
   }
 
   function capitalize(str) {
-    return str
-      ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
-      : "";
+    return str ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() : "";
   }
 
   function generateMenuHTML(items) {
@@ -70,21 +69,16 @@ function WeekSection({ activeTab }) {
 
     items.forEach((i) =>
       i.Componentes.forEach((c) => {
-        if (c.TipoString === "Sopa")
-          soups.add(capitalize(c.Nome));
-      })
+        if (c.TipoString === "Sopa") soups.add(capitalize(c.Nome));
+      }),
     );
 
     if (soups.size) {
-      html += `<p><strong>Sopa</strong>: ${[
-        ...soups,
-      ].join("; ")}</p>`;
+      html += `<p><strong>Sopa</strong>: ${[...soups].join("; ")}</p>`;
     }
 
     items.forEach((item) => {
-      const pratos = item.Componentes.filter(
-        (c) => c.TipoString === "Prato"
-      );
+      const pratos = item.Componentes.filter((c) => c.TipoString === "Prato");
       if (!pratos.length) return;
 
       let label = "Prato";
@@ -106,13 +100,24 @@ function WeekSection({ activeTab }) {
   }
 
   useEffect(() => {
+    if (!loading) return;
+
+    const interval = setInterval(() => {
+      setDots((prev) => {
+        if (prev.length >= 3) return ".";
+        return prev + ".";
+      });
+    }, 500);
+
+    return () => clearInterval(interval);
+  }, [loading]);
+
+  useEffect(() => {
     async function loadWeek() {
       const requests = Array.from({ length: 7 }, (_, i) => {
         const date = getRollingDate(i);
 
-        return fetch(
-          `https://api.cantinas.pt/?date=${formatDate(date)}`
-        )
+        return fetch(`https://api.cantinas.pt/?date=${formatDate(date)}`)
           .then((res) => res.json())
           .then((data) => ({
             date,
@@ -134,9 +139,7 @@ function WeekSection({ activeTab }) {
 
   if (!selectedCanteen) return null;
 
-  const normalizedSelected = normalizeString(
-    selectedCanteen.tag
-  );
+  const normalizedSelected = normalizeString(selectedCanteen.tag);
 
   const todayIndex = new Date().getDay();
 
@@ -146,33 +149,26 @@ function WeekSection({ activeTab }) {
         <div className="container">
           {loading &&
             (() => {
-              const todayName =
-                weekdayNames[todayIndex];
+              const todayName = weekdayNames[todayIndex];
 
               return (
                 <div className="day-block mb-5">
                   <div className="section-header text-center mb-5">
-                    <h2 className="section-title mb-3">
-                      {todayName}
-                    </h2>
+                    <h2 className="section-title mb-3">{todayName}</h2>
                   </div>
 
                   <div className="row">
                     <div className="col-12 col-md-6 py-4">
                       <div className="item-inner shadow rounded-4 p-4 h-100">
-                        <h3 className="item-heading mb-4">
-                          Almoço
-                        </h3>
-                        <p>A carregar ementas...</p>
+                        <h3 className="item-heading mb-4">Almoço</h3>
+                        <p>A carregar ementas{dots}</p>
                       </div>
                     </div>
 
                     <div className="col-12 col-md-6 py-4">
                       <div className="item-inner shadow rounded-4 p-4 h-100">
-                        <h3 className="item-heading mb-4">
-                          Jantar
-                        </h3>
-                        <p>A carregar ementas...</p>
+                        <h3 className="item-heading mb-4">Jantar</h3>
+                        <p>A carregar ementas{dots}</p>
                       </div>
                     </div>
                   </div>
@@ -182,49 +178,31 @@ function WeekSection({ activeTab }) {
 
           {!loading &&
             weekData.map((day, index) => {
-              const meals = (day.data || []).filter(
-                (m) =>
-                  m.Refeitorios.some(
-                    (r) =>
-                      normalizeString(r) ===
-                      normalizedSelected
-                  )
+              const meals = (day.data || []).filter((m) =>
+                m.Refeitorios.some(
+                  (r) => normalizeString(r) === normalizedSelected,
+                ),
               );
 
               const grouped = groupByPeriod(meals);
 
               return (
-                <div
-                  className="day-block mb-5"
-                  key={index}
-                >
+                <div className="day-block mb-5" key={index}>
                   <div className="section-header text-center mb-5">
                     <h2 className="section-title mb-3">
-                      {
-                        weekdayNames[
-                          day.date.getDay()
-                        ]
-                      }
+                      {weekdayNames[day.date.getDay()]}
                     </h2>
                   </div>
 
                   <div className="row">
                     <div className="col-12 col-md-6 py-4">
                       <div className="item-inner shadow rounded-4 p-4 h-100">
-                        <h3 className="item-heading mb-4">
-                          Almoço
-                        </h3>
+                        <h3 className="item-heading mb-4">Almoço</h3>
                         <div
                           dangerouslySetInnerHTML={{
                             __html:
-                              grouped["Almoço"] &&
-                              grouped["Almoço"]
-                                .length > 0
-                                ? generateMenuHTML(
-                                    grouped[
-                                      "Almoço"
-                                    ]
-                                  )
+                              grouped["Almoço"] && grouped["Almoço"].length > 0
+                                ? generateMenuHTML(grouped["Almoço"])
                                 : "<p class='text-muted'>Não existem ementas disponíveis.</p>",
                           }}
                         />
@@ -233,20 +211,12 @@ function WeekSection({ activeTab }) {
 
                     <div className="col-12 col-md-6 py-4">
                       <div className="item-inner shadow rounded-4 p-4 h-100">
-                        <h3 className="item-heading mb-4">
-                          Jantar
-                        </h3>
+                        <h3 className="item-heading mb-4">Jantar</h3>
                         <div
                           dangerouslySetInnerHTML={{
                             __html:
-                              grouped["Jantar"] &&
-                              grouped["Jantar"]
-                                .length > 0
-                                ? generateMenuHTML(
-                                    grouped[
-                                      "Jantar"
-                                    ]
-                                  )
+                              grouped["Jantar"] && grouped["Jantar"].length > 0
+                                ? generateMenuHTML(grouped["Jantar"])
                                 : "<p class='text-muted'>Não existem ementas disponíveis.</p>",
                           }}
                         />
