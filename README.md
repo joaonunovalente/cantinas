@@ -1,7 +1,7 @@
 # cantinas
 <div align="center">
   <br>
-  <img src="src/assets/images/logo/logo-color.svg" alt="Cantinas.pt logo" width="220" />
+  <img src="src/assets/images/logo/logo-color-purple.svg" alt="Cantinas.pt logo" width="1000" />
   <br>
 </div>
 
@@ -18,8 +18,8 @@ When the app loads, the frontend requests the current day menu through the Worke
 ## Technical Overview
 
 - **Frontend**
-  - React + Vite single-page application
-  - UI based on the [DevDesk theme](https://github.com/xriley/DevDesk-Theme), adapted for canteen workflows
+  - React + Vite application
+  - UI based on the [DevDesk theme](https://github.com/xriley/DevDesk-Theme)
   - Responsive layout with canteen tabs, meal-period grouping, FAQ, and support pages
 
 - **Middleware**
