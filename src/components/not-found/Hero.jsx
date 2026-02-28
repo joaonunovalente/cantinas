@@ -1,8 +1,6 @@
-import SearchForm from "../common/SearchForm";
-
 function Hero({
-  title = "Page not found",
-  description = "The page you are looking for can not be found.",
+  title = "Página não encontrada",
+  description = "A página que procuras não foi encontrada",
 }) {
   return (
     <div className="page-heading-holder">
@@ -11,7 +9,7 @@ function Hero({
         <div className="page-heading-sub single-col-max mx-auto">
           <div className="help-search-intro">{description}</div>
           <div className="help-search-main pt-3 d-block mx-auto">
-            <SearchForm />
+            {/* <SearchForm /> */}
           </div>
         </div>
       </div>
