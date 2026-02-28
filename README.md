@@ -1,4 +1,3 @@
-# cantinas
 <div align="center">
   <br>
   <img src="src/assets/images/logo/logo-color-purple.svg" alt="Cantinas.pt logo" width="1000" />
