@@ -5,7 +5,6 @@ import NotFoundPage from "../pages/NotFoundPage";
 import FaqPage from "../pages/FaqPage";
 import SemanaPage from "../pages/SemanaPage";
 import SobreCantinasPage from "../pages/SobreCantinasPage";
-import ArticlePage from "../pages/ArticlePage";
 
 const appRoutes = [
   {
@@ -31,10 +30,6 @@ const appRoutes = [
   {
     path: "/contacto",
     element: <ContactoPage />,
-  },
-  {
-    path: "/article",
-    element: <ArticlePage />,
   },
   {
     path: "*",
