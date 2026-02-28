@@ -3,7 +3,7 @@ function MainContent() {
     <section className="help-featured-section theme-section">
       <div className="container">
         <div className="section-header mb-3 text-center">
-          <h2 className="section-title mb-5">Página não encontrada</h2>
+          <h2 className="section-title mb-5">Ops... página não encontrada</h2>
 
           <div className="d-flex justify-content-center">
             <div className="col-lg-6">
