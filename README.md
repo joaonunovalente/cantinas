@@ -7,14 +7,14 @@
 # Cantinas.pt
 
 **Cantinas.pt** is a free-access web platform that aggregates and displays menus from the University of Aveiro canteens. The experience is optimized for students who need quick, reliable access to daily and weekly meal information.
-<br>
+<br></br>
 
 ## Project Summary
 
 Designed for speed and reliability, **Cantinas.pt** uses a Cloudflare Worker as an intermediary layer for API requests. This architecture helps reduce latency and keeps response times stable, even during higher traffic periods.
 
 When the app loads, the frontend requests the current day menu through the Worker endpoint. Returned data (organized by canteen and meal period) is parsed and rendered dynamically, allowing users to quickly see available dishes by location and schedule.
-<br>
+<br></br>
 
 ## Technical Overview
 
@@ -32,7 +32,7 @@ When the app loads, the frontend requests the current day menu through the Worke
 
 - **Hosting**
   - Delivered via Cloudflare
-<br>
+<br></br>
 
 ## Contact
 
