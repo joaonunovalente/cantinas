@@ -131,6 +131,17 @@
   font-size: 0.95rem;
 }
 
-.footer-link:hover{
+.footer-link:hover {
   color: #53B656;
 }
+
+.footer .logo-icon {
+  height: 45px;
+  width: auto;
+}
+
+.footer-link {
+  font-size: 0.9rem;
+}
+
+
