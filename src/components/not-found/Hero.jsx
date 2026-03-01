@@ -1,6 +1,6 @@
 function Hero({
   title = "Página não encontrada",
-  description = "A página que procuras não foi encontrada",
+  description = "A página que procuras não foi encontrada.",
 }) {
   return (
     <div className="page-heading-holder">
