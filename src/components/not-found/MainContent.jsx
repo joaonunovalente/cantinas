@@ -1,6 +1,6 @@
 function MainContent() {
   return (
-    <section className="help-featured-section theme-section">
+    <section className="help-featured-section theme-section container">
       <div className="container">
         <div className="section-header mb-3 text-center">
           <h2 className="section-title mb-5">Ops... página não encontrada</h2>
