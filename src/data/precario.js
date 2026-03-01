@@ -94,7 +94,9 @@ const precario = [
     precos: [
       { id: "universitario-1", tipo: "Refeição Completa", descricao: "Entradas + Prato + Bebida + Café", preco: "9,00\u00A0€" },
     ],
-    observacoes: [],
+    observacoes: [
+      { id: "obs1", ref: " ", texto: " " },
+    ],
   },
 ];
 
