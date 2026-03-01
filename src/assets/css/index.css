@@ -10,6 +10,60 @@
 
 .footer {
   margin-top: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer .container {
+  position: relative;
+  z-index: 1;
+}
+
+.footer-bg-pattern-holder {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.footer-bg-pattern-top,
+.footer-bg-pattern-bottom {
+  position: absolute;
+  background-repeat: no-repeat;
+  opacity: 0.08;
+}
+
+.footer-bg-pattern-top {
+  left: -10%;
+  top: -75%;
+  width: 75%;
+  height: 180%;
+  background-image: url("../images/patterns/pattern-shape-white.svg");
+  background-size: contain;
+}
+
+.footer-bg-pattern-bottom {
+  right: -4%;
+  bottom: -45%;
+  width: 45%;
+  height: 140%;
+  background-image: url("../images/patterns/pattern-clound-white.svg");
+  background-position: right bottom;
+  background-size: contain;
+}
+
+@media (max-width: 767px) {
+  .footer-bg-pattern-top {
+    width: 120%;
+    left: -35%;
+    top: -65%;
+  }
+
+  .footer-bg-pattern-bottom {
+    width: 70%;
+    right: -15%;
+    bottom: -35%;
+  }
 }
 
 .hyperlink {

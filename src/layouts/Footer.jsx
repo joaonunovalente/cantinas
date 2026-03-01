@@ -13,6 +13,10 @@ const footerLinks = [
 function Footer() {
   return (
     <footer className="footer py-4">
+      <div className="footer-bg-pattern-holder" aria-hidden="true">
+        <div className="footer-bg-pattern-top"></div>
+        <div className="footer-bg-pattern-bottom"></div>
+      </div>
       <div className="container text-center">
         <img className="logo-icon mb-3" src={logo} alt="Logo do Cantinas.pt" />
         <nav aria-label="Navegação do rodapé">
