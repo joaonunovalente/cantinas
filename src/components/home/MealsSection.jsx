@@ -25,7 +25,7 @@ function MealsSection({ activeTab, ementas, loading }) {
       <section className="theme-section">
         <SectionHeaderTitle title={selectedCanteen.nome} />
         <div className="container">
-          <div className="row g-4 align-items-stretch mt-3">
+          <div className="row g-4 align-items-stretch my-3">
             <MealCard
               title="Almoço"
               items={groupByPeriod("Almoço")}
