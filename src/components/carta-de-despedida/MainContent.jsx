@@ -90,7 +90,7 @@ function MainContent() {
 
           <p className="mt-5">O cartaz tem o tamanho A0 (com uma área de 1 m²), que quer dizer que é o dobro de um A1. Que por sua vez é o dobro de um A2; que por sua vez é o dobro de um A3; que por sua vez é o dobro de uma folha A4.</p>
 
-          <p className="mb-5">Mas o <strong>Cantinas.pt</strong> também esteve - e nalguns casos ainda está - presente em mais espaços da universidade. Eis outro exemplo.</p>
+          <p className="mb-5">Mas o <strong>Cantinas.pt</strong> também esteve - e nalguns casos ainda está - presente em mais espaços da universidade. Eis outros exemplos.</p>
 
           <div
             id="cartazesSecundariosCarousel"

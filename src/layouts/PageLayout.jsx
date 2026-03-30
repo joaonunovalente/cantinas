@@ -8,10 +8,10 @@ function PageLayout({ children, hero }) {
         <div className="page-header-wrapper">
           <>
             <div className="bg-success text-white text-center py-2 small fw-semibold">
-              As ementas das cantinas voltaram a estar disponíveis em <a className="text-dark" href="https://cms.ua.pt/ementas/">cms.ua.pt/ementas</a> .
+              As ementas das cantinas voltaram a estar disponíveis em <a className="text-dark" href="https://cms.ua.pt/ementas/">cms.ua.pt/ementas</a>.
             </div>
             <div className="bg-warning text-dark text-center py-2 small fw-semibold">
-              Este projeto foi arquivado, podendo ser consultada a versão funcional <a href="https://demo.cantinas.pt">demo.cantinas.pt</a> . Lê a <a className=" text-decoration-underline" href="/carta-de-despedida">Carta de Despedida</a>.
+              Este projeto foi arquivado, podendo ser consultada a versão funcional em <a href="https://demo.cantinas.pt">demo.cantinas.pt</a> . Lê a <a className=" text-decoration-underline" href="/carta-de-despedida">Carta de Despedida</a>.
             </div>
           </>
 
