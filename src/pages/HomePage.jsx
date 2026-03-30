@@ -45,6 +45,7 @@ function HomePage() {
 
   return (
     <PageLayout
+      topBanner
       hero={
         <Hero tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
       }
