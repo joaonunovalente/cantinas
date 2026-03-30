@@ -193,7 +193,6 @@ function WeekSection({ activeTab }) {
                   <div className="item-inner shadow rounded-4 p-4 h-100">
                     <h3 className="item-heading mb-4">Almoço</h3>
                     <p>Não existem ementas disponíveis.</p>
-                    <p>Provavelmente, encontra-se encerrado.</p>
                   </div>
                 </div>
 
@@ -201,7 +200,6 @@ function WeekSection({ activeTab }) {
                   <div className="item-inner shadow rounded-4 p-4 h-100">
                     <h3 className="item-heading mb-4">Jantar</h3>
                     <p>Não existem ementas disponíveis.</p>
-                    <p>Provavelmente, encontra-se encerrado.</p>
                   </div>
                 </div>
               </div>
