@@ -29,7 +29,10 @@ function WeekSection({ activeTab }) {
   const selectedCanteen = canteenMap[activeTab];
 
   function formatDate(date) {
-    return date.toISOString().split("T")[0];
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
   }
 
   function getRollingDate(offset) {
@@ -179,7 +182,29 @@ function WeekSection({ activeTab }) {
           )}
 
           {!loading && apiReturnedNothing && (
-            <p className="text-muted">Não existem ementas disponíveis.</p>
+            <div className="day-block mb-5">
+              <div className="section-header text-center mb-5">
+                <h2 className="section-title mb-3">
+                  {weekdayNames[todayIndex]}
+                </h2>
+              </div>
+              <div className="row">
+                <div className="col-12 col-md-6 py-4">
+                  <div className="item-inner shadow rounded-4 p-4 h-100">
+                    <h3 className="item-heading mb-4">Almoço</h3>
+                    <p>Não existem ementas disponíveis.</p>
+                  </div>
+                </div>
+
+                <div className="col-12 col-md-6 py-4">
+                  <div className="item-inner shadow rounded-4 p-4 h-100">
+                    <h3 className="item-heading mb-4">Jantar</h3>
+                    <p>Não existem ementas disponíveis.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           )}
 
           {!loading &&

@@ -3,8 +3,6 @@ import PageLayout from "../layouts/PageLayout";
 import Hero from "../components/semana/Hero";
 import WeekSection from "../components/semana/WeekSection";
 
-import ementas from "../data/ementas";
-
 function SemanaPage() {
   const [activeTab, setActiveTab] = useState("santiago");
   const tabs = [
@@ -21,7 +19,7 @@ function SemanaPage() {
         <Hero tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
       }
     >
-      <WeekSection activeTab={activeTab} ementas={ementas} />
+      <WeekSection activeTab={activeTab} />
     </PageLayout>
   );
 }
