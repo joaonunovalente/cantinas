@@ -5,6 +5,7 @@ import NotFoundPage from "../pages/NotFoundPage";
 import FaqPage from "../pages/FaqPage";
 import SemanaPage from "../pages/SemanaPage";
 import SobreCantinasPage from "../pages/SobreCantinasPage";
+import CartaDeDespedidaPage from "../pages/CartaDeDespedidaPage";
 
 const appRoutes = [
   {
@@ -26,6 +27,10 @@ const appRoutes = [
   {
     path: "/perguntas-frequentes",
     element: <FaqPage />,
+  },
+  {
+    path: "/carta-de-despedida",
+    element: <CartaDeDespedidaPage />,
   },
   {
     path: "/contacto",
