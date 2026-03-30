@@ -30,7 +30,7 @@ function MealCard({ title, items, loading }) {
           {loading ? (
             <p className="mb-0">A carregar as ementas{LOADING_FRAMES[frameIndex]}</p>
           ) : items.length === 0 ? (
-            <p className="mb-0">Encontra-se encerrado.</p>
+            <p className="mb-0">Não existem ementas disponíveis.</p>
           ) : (
             formatMenu(items)
           )}
