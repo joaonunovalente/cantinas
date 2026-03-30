@@ -43,7 +43,7 @@ function MainContent() {
           <p >Vale a pena recordar como tudo começou.</p>
           <p>- - -</p>
           <p>
-            O <strong>Cantinas.pt</strong> obteve a sua inspiração num projeto do GLUA (Grupo de Linux da Universidade de Aveiro) no GitHub, que faz precisamente o que o <strong>Cantinas.pt</strong> se propõe a fazer, mas focado apenas no sistema operativo Linux.
+            O <strong>Cantinas.pt</strong> obteve a sua inspiração num projeto do GLUA (Grupo de Linux da Universidade de Aveiro) no <a href="https://github.com/GLUA-UA">GitHub</a> , que faz precisamente o que o <strong>Cantinas.pt</strong> se propôs a fazer, mas focado apenas no sistema operativo Linux.
 
 
 
@@ -65,7 +65,7 @@ function MainContent() {
 
           <h4 className="mt-5 mb-5">Alguns números</h4>
           <p>
-            Para mostrar o alcance do <strong>Cantinas.pt</strong>: no primeiro
+            Para mostrar o alcance do projeto no primeiro
             dia em que ficou estéril de ementas para mostrar, o
             <strong> Cantinas.pt</strong> obteve quase 1.000 visitas.
           </p>

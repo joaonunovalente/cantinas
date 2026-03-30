@@ -7,6 +7,8 @@ const footerLinks = [
   { to: "/horarios-precario", label: "Horários e Preçário" },
   { to: "/sobre", label: "Sobre" },
   { to: "/perguntas-frequentes", label: "Perguntas Frequentes" },
+  { to: "/carta-de-despedida", label: "Carta de Despedida" },
+
   { to: "/contacto", label: "Contacto" },
 ];
 
