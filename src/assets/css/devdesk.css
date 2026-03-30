@@ -13115,6 +13115,7 @@ a.text-link:hover {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  pointer-events: none;
 }
 .page-header-bg-pattern-holder .bg-pattern-top {
   display: block;
