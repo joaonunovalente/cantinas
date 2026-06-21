@@ -32,7 +32,11 @@ function Footer() {
             ))}
           </ul>
         </nav>
+        <div className="text-center pt-4 small " style={{ color: '#c0c0c0' }}>
+          O <strong>Cantinas.pt</strong> não tem qualquer afiliação com a Universidade de Aveiro.
+        </div>
       </div>
+
     </footer>
   );
 }
