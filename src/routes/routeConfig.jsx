@@ -1,13 +1,11 @@
-import { lazy } from "react";
-
-const ContactoPage = lazy(() => import("../pages/ContactoPage"));
-const HomePage = lazy(() => import("../pages/HomePage"));
-const HorariosPrecarioPage = lazy(() => import("../pages/HorariosPrecarioPage"));
-const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));
-const FaqPage = lazy(() => import("../pages/FaqPage"));
-const SemanaPage = lazy(() => import("../pages/SemanaPage"));
-const SobreCantinasPage = lazy(() => import("../pages/SobreCantinasPage"));
-const CartaDeDespedidaPage = lazy(() => import("../pages/CartaDeDespedidaPage"));
+import ContactoPage from "../pages/ContactoPage";
+import HomePage from "../pages/HomePage";
+import HorariosPrecarioPage from "../pages/HorariosPrecarioPage";
+import NotFoundPage from "../pages/NotFoundPage";
+import FaqPage from "../pages/FaqPage";
+import SemanaPage from "../pages/SemanaPage";
+import SobreCantinasPage from "../pages/SobreCantinasPage";
+import CartaDeDespedidaPage from "../pages/CartaDeDespedidaPage";
 
 const appRoutes = [
   {
