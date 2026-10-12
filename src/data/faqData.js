@@ -55,6 +55,24 @@ const faqData = [
       },
       {
         id: "faq3",
+        question: "O Cantinas.pt está arquivado?",
+        answer: [
+          {
+            type: "paragraph",
+            content: [
+              { type: "text", value: "Sim. Apesar de eventualmente o " },
+              { type: "bold", value: "Cantinas.pt" },
+              {
+                type: "text",
+                value:
+                  " estar a funcionar, não quer dizer que esteja de volta.",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: "faq4",
         question: "Os horários e o preçário estão atualizados?",
         answer: [
           {
@@ -77,7 +95,7 @@ const faqData = [
         ],
       },
       {
-        id: "faq4",
+        id: "faq5",
         question:
           "Qual é o motivo de as ementas terem erros ortográficos?",
         answer: [
@@ -108,7 +126,7 @@ const faqData = [
         ],
       },
       {
-        id: "faq5",
+        id: "faq6",
         question: "Vai existir uma versão em inglês?",
         answer: [
           {
@@ -119,7 +137,7 @@ const faqData = [
         ],
       },
       {
-        id: "faq6",
+        id: "faq7",
         question: "Posso sugerir melhorias ou reportar erros?",
         answer: [
           {
@@ -137,7 +155,7 @@ const faqData = [
         ],
       },
       {
-        id: "faq7",
+        id: "faq8",
         question: "Porque é que as ementas não estão a carregar?",
         answer: [
           { type: "paragraph", content: "Existem três motivos possíveis:" },
@@ -169,7 +187,7 @@ const faqData = [
         ],
       },
       {
-        id: "faq8",
+        id: "faq9",
         question:
           'Por vezes, as ementas ficam "A carregar a ementa..." durante imenso tempo.',
         answer: [
@@ -213,7 +231,7 @@ const faqData = [
         ],
       },
       {
-        id: "faq9",
+        id: "faq10",
         question:
           "Enviei uma mensagem através do formulário e não obtive resposta...",
         answer: [
@@ -228,7 +246,7 @@ const faqData = [
         ],
       },
       {
-        id: "faq10",
+        id: "faq11",
         question:
           "É possível saber a ementa de um dia específico?",
         answer: [
@@ -266,7 +284,7 @@ const faqData = [
         ],
       },
       {
-        id: "faq11",
+        id: "faq12",
         question:
           "Qual foi a inspiração para criar o Cantinas.pt?",
         answer: [
@@ -314,7 +332,7 @@ const faqData = [
         ],
       },
       {
-        id: "faq12",
+        id: "faq13",
         question: "Como posso apoiar o projeto?",
         answer: [
           {
@@ -337,7 +355,7 @@ const faqData = [
         ],
       },
       {
-        id: "faq13",
+        id: "faq14",
         question: "Existe algum Easter Egg?",
         answer: [
           {
