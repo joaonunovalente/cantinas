@@ -30,13 +30,25 @@ const faqData = [
           {
             type: "paragraph",
             content: [
-              { type: "text", value: "A informação é obtida a partir de " },
+              { type: "text", value: "A informação costumava ser obtida a partir de " },
               {
                 type: "link",
-                href: "http://api.web.ua.pt/en/services/universidade_de_aveiro/ementas",
+                href: "https://cms.ua.pt/ementas/ementas",
                 label: "fontes oficiais públicas",
               },
               { type: "text", value: " da Universidade de Aveiro." },
+            ],
+          },
+          {
+            type: "paragraph",
+            content: [
+              { type: "text", value: "Para perceber o contexto atual, lê a " },
+              {
+                type: "link",
+                href: "/carta-de-despedida",
+                label: "Carta de Despedida",
+              },
+              { type: "text", value: "." },
             ],
           },
         ],
@@ -230,8 +242,8 @@ const faqData = [
               { type: "text", value: "Usando a ligação " },
               {
                 type: "code",
-                value: "api.cantinas.pt/?date=yyyy-mm-dd",
-                href: "https://api.cantinas.pt/?date=yyyy-mm-dd",
+                value: "ementas.franciscoribeiro.pt/api/v1/menus?from=yyyy-mm-dd&to=yyyy-mm-dd",
+                href: "https://ementas.franciscoribeiro.pt/api/v1/menus?from=yyyy-mm-dd&to=yyyy-mm-dd",
               },
               { type: "text", value: " é possível obter um ficheiro " },
               {
@@ -239,13 +251,13 @@ const faqData = [
                 href: "https://www.json.org/json-pt.html",
                 label: "JSON",
               },
-              { type: "text", value: "." },
+              { type: "text", value: " com as ementas." },
             ],
           },
           {
             type: "paragraph",
             content:
-              "Este ficheiro tem mais informações para além das ementas, nomeadamente os alergénios presentes (ex: glúten, ovos, soja, leite, aipo, mostarda, sulfitos).",
+              "É possível filtrar por cantina com o parâmetro canteens (ex: ?canteens=santiago,crasto) e ver a lista de cantinas em ementas.franciscoribeiro.pt/api/v1/canteens.",
           },
           {
             type: "paragraph",

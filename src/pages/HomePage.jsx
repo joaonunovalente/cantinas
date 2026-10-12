@@ -2,46 +2,43 @@ import { useState, useEffect } from "react";
 import PageLayout from "../layouts/PageLayout";
 import Hero from "../components/home/Hero";
 import MealsSection from "../components/home/MealsSection";
+import {
+  CANTEENS,
+  formatDateISO,
+  fetchMenus,
+  findCanteenInPayload,
+} from "../lib/api";
 
 function HomePage() {
   const [activeTab, setActiveTab] = useState("santiago");
-  const [ementas, setEmentas] = useState([]);
+  const [payload, setPayload] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const tabs = [
-    { id: "santiago", label: "Santiago" },
-    { id: "crasto", label: "Crasto" },
-    { id: "grelhados", label: "Grelhados" },
-    { id: "estga", label: "ESTGA" },
-    { id: "universitario", label: "Restaurante Universitário" },
-  ];
+  const tabs = CANTEENS.map(({ id, label }) => ({ id, label }));
 
   useEffect(() => {
-    const fetchEmentas = async () => {
-      const now = new Date();
-      const today =
-        now.getFullYear() +
-        "-" +
-        String(now.getMonth() + 1).padStart(2, "0") +
-        "-" +
-        String(now.getDate()).padStart(2, "0");
-      const url = `https://api.cantinas.pt/?date=${today}`;
+    let cancelled = false;
 
+    const fetchEmentas = async () => {
+      const today = formatDateISO(new Date());
       try {
-        const res = await fetch(url);
-        if (!res.ok) throw new Error("Erro ao carregar ementas");
-        const data = await res.json();
-        setEmentas(data);
+        const data = await fetchMenus({ from: today, to: today });
+        if (!cancelled) setPayload(data);
       } catch (err) {
         console.error(err);
-        setEmentas([]);
+        if (!cancelled) setPayload(null);
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     };
 
     fetchEmentas();
+    return () => {
+      cancelled = true;
+    };
   }, []);
+
+  const canteen = findCanteenInPayload(payload, activeTab);
 
   return (
     <PageLayout
@@ -51,7 +48,7 @@ function HomePage() {
     >
       <MealsSection
         activeTab={activeTab}
-        ementas={ementas}
+        canteen={canteen}
         loading={loading}
       />
     </PageLayout>

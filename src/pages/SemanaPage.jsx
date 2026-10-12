@@ -2,16 +2,11 @@ import { useState } from "react";
 import PageLayout from "../layouts/PageLayout";
 import Hero from "../components/semana/Hero";
 import WeekSection from "../components/semana/WeekSection";
+import { CANTEENS } from "../lib/api";
 
 function SemanaPage() {
   const [activeTab, setActiveTab] = useState("santiago");
-  const tabs = [
-    { id: "santiago", label: "Santiago" },
-    { id: "crasto", label: "Crasto" },
-    { id: "grelhados", label: "Grelhados" },
-    { id: "estga", label: "ESTGA" },
-    { id: "universitario", label: "Restaurante Universitário" },
-  ];
+  const tabs = CANTEENS.map(({ id, label }) => ({ id, label }));
 
   return (
     <PageLayout

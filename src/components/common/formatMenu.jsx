@@ -1,54 +1,53 @@
+const CATEGORY_ORDER = ["soup", "meat", "fish", "diet", "vegetarian", "other"];
+
+const CATEGORY_FALLBACK_LABELS = {
+  soup: "Sopa",
+  meat: "Carne",
+  fish: "Peixe",
+  diet: "Dieta",
+  vegetarian: "Vegetariana",
+  other: "Prato",
+};
+
+function getLabel(item) {
+  if (item.sourceLabel) return item.sourceLabel;
+  return CATEGORY_FALLBACK_LABELS[item.category] ?? "Prato";
+}
+
+// items: [{ category, sourceLabel, text }]
 function formatMenu(items) {
-  const groupedByNome = {};
+  if (!items || items.length === 0) return null;
 
-  items.forEach((item) => {
-    groupedByNome[item.Nome] = item.Componentes;
-  });
+  const sorted = [...items].sort(
+    (a, b) =>
+      CATEGORY_ORDER.indexOf(a.category) - CATEGORY_ORDER.indexOf(b.category)
+  );
 
-  const capitalize = (str) =>
-    str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-
-  const soups = [];
-
-  Object.values(groupedByNome).forEach((componentes) => {
-    componentes.forEach((c) => {
-      if (c.TipoString === "Sopa") {
-        const name = capitalize(c.Nome);
-        if (!soups.includes(name)) soups.push(name);
-      }
-    });
-  });
+  // "other" sem sourceLabel (ex: TrêsDê) -> lista simples sem rótulo repetido
+  const othersWithoutLabel = sorted.filter(
+    (i) => i.category === "other" && !i.sourceLabel
+  );
+  const labelled = sorted.filter(
+    (i) => !(i.category === "other" && !i.sourceLabel)
+  );
 
   return (
     <>
-      {soups.length > 0 && (
-        <p>
-          <strong>Sopa</strong>: {soups.join("; ")}
+      {labelled.map((item, i) => (
+        <p key={i} className="mb-2">
+          <strong>{getLabel(item)}</strong>: {item.text}
         </p>
+      ))}
+
+      {othersWithoutLabel.length > 0 && (
+        <ul className="mb-0 ps-3">
+          {othersWithoutLabel.map((item, i) => (
+            <li key={`other-${i}`}>{item.text}</li>
+          ))}
+        </ul>
       )}
-
-      {Object.entries(groupedByNome).map(([nome, componentes], i) => {
-        const pratos = componentes.filter((c) => c.TipoString === "Prato");
-
-        if (!pratos.length) return null;
-
-        let typeLabel = "Prato";
-        const upper = nome.toUpperCase();
-
-        if (upper.includes("CARNE")) typeLabel = "Carne";
-        else if (upper.includes("PEIXE")) typeLabel = "Peixe";
-        else if (upper.includes("DIETA")) typeLabel = "Dieta";
-        else if (upper.includes("VEGETARIANO")) typeLabel = "Vegetariano";
-
-        return (
-          <p key={i}>
-            <strong>{typeLabel}</strong>:{" "}
-            {pratos.map((p) => capitalize(p.Nome)).join("; ")}
-          </p>
-        );
-      })}
     </>
   );
 }
 
-export default formatMenu
+export default formatMenu;
