@@ -33,16 +33,21 @@ function formatMenu(items) {
 
   return (
     <>
-      {labelled.map((item, i) => (
-        <p key={i} className="mb-2">
-          <strong>{getLabel(item)}</strong>: {item.text}
-        </p>
-      ))}
+      {labelled.length > 0 && (
+        <dl className="mb-2">
+          {labelled.map((item, idx) => (
+            <div key={`${item.category}-${item.sourceLabel ?? ""}-${item.text}-${idx}`} className="mb-2">
+              <dt className="d-inline fw-bold">{getLabel(item)}</dt>
+              <dd className="d-inline mb-0">: {item.text}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
 
       {othersWithoutLabel.length > 0 && (
         <ul className="mb-0 ps-3">
-          {othersWithoutLabel.map((item, i) => (
-            <li key={`other-${i}`}>{item.text}</li>
+          {othersWithoutLabel.map((item, idx) => (
+            <li key={`other-${item.text}-${idx}`}>{item.text}</li>
           ))}
         </ul>
       )}

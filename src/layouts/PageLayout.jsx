@@ -7,7 +7,6 @@ function PageLayout({ children, hero }) {
     <>
       <div className="site-shell">
         <div className="page-header-wrapper">
-          <Alerts />
           <div className="page-header-bg-pattern-holder">
             <div className="bg-pattern-top"></div>
             <div className="bg-pattern-bottom"></div>
@@ -18,6 +17,7 @@ function PageLayout({ children, hero }) {
 
         {children}
         <Footer />
+        <Alerts />
       </div>
     </>
   );

@@ -1,24 +1,27 @@
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import formatMenu from "../common/formatMenu";
+import { findCanteenInPayload, getCanteenById } from "../../lib/api";
+import { useMenus } from "../../hooks/useMenus";
 import {
-  addDays,
-  formatDateISO,
-  fetchMenus,
-  findCanteenInPayload,
-  getCanteenById,
-} from "../../lib/api";
+  addDaysISO,
+  formatLongPt,
+  startOfDay,
+  toISODate,
+} from "../../lib/date";
 
-const WEEKDAY_NAMES = [
-  "Domingo",
-  "Segunda-feira",
-  "Terça-feira",
-  "Quarta-feira",
-  "Quinta-feira",
-  "Sexta-feira",
-  "Sábado",
-];
-
-function MealBlock({ meal }) {
+function MealBlock({ meal, error, onRetry }) {
+  if (error) {
+    return (
+      <div role="alert">
+        <p className="mb-2">Não foi possível carregar a ementa.</p>
+        {onRetry && (
+          <button type="button" className="btn btn-sm btn-outline-success" onClick={onRetry}>
+            Tentar novamente
+          </button>
+        )}
+      </div>
+    );
+  }
   if (!meal) {
     return <p className="text-muted mb-0">Encontra-se encerrado.</p>;
   }
@@ -31,131 +34,108 @@ function MealBlock({ meal }) {
   return formatMenu(meal.items);
 }
 
+function SkeletonDay() {
+  return (
+    <div className="day-block mb-5" aria-hidden="true">
+      <div className="section-header text-center mb-4">
+        <div className="skeleton skeleton-title mx-auto" />
+      </div>
+      <div className="row">
+        {[0, 1].map((i) => (
+          <div key={i} className="col-12 col-md-6 py-4">
+            <div className="item-inner shadow rounded-4 p-4 h-100">
+              <div className="skeleton skeleton-line w-25 mb-4" />
+              <div className="skeleton skeleton-line" />
+              <div className="skeleton skeleton-line w-75" />
+              <div className="skeleton skeleton-line w-50" />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function WeekSection({ activeTab }) {
-  const [payload, setPayload] = useState(null);
-  const [dates, setDates] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [dots, setDots] = useState(".");
-
   const selectedCanteen = getCanteenById(activeTab);
-  const canteen = findCanteenInPayload(payload, activeTab);
 
-  useEffect(() => {
-    if (!loading) return;
-
-    const interval = setInterval(() => {
-      setDots((prev) => (prev.length >= 3 ? "." : prev + "."));
-    }, 500);
-
-    return () => clearInterval(interval);
-  }, [loading]);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    async function loadWeek() {
-      const start = new Date();
-      start.setHours(0, 0, 0, 0);
-      const range = Array.from({ length: 7 }, (_, i) => addDays(start, i));
-      setDates(range);
-
-      const from = formatDateISO(range[0]);
-      const to = formatDateISO(range[6]);
-
-      try {
-        const data = await fetchMenus({ from, to });
-        if (cancelled) return;
-        setPayload(data);
-      } catch (err) {
-        console.error(err);
-        if (!cancelled) setPayload(null);
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
-    }
-
-    setLoading(true);
-    loadWeek();
-
-    return () => {
-      cancelled = true;
-    };
-    // Fetch único para a semana; a filtragem por cantina é feita em memória.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  const dates = useMemo(() => {
+    const base = startOfDay(new Date());
+    return Array.from({ length: 7 }, (_, i) => addDaysISO(base, i));
   }, []);
 
-  if (!selectedCanteen) return null;
+  const from = dates.length ? toISODate(dates[0]) : null;
+  const to = dates.length ? toISODate(dates[dates.length - 1]) : null;
+  const { data: payload, loading, error, retry } = useMenus({ from, to });
+  const canteen = findCanteenInPayload(payload, activeTab);
 
-  const daysByDate = new Map(
-    (canteen?.days ?? []).map((d) => [d.date, d])
+  const daysByDate = useMemo(
+    () => new Map((canteen?.days ?? []).map((d) => [d.date, d])),
+    [canteen]
   );
 
-  const renderLoading = () => {
-    const todayIndex = new Date().getDay();
-    return (
-      <div className="day-block mb-5">
-        <div className="section-header text-center mb-5">
-          <h2 className="section-title mb-3">{WEEKDAY_NAMES[todayIndex]}</h2>
-        </div>
-        <div className="row">
-          <div className="col-12 col-md-6 py-4">
-            <div className="item-inner shadow rounded-4 p-4 h-100">
-              <h3 className="item-heading mb-4">Almoço</h3>
-              <p>A carregar ementas{dots}</p>
-            </div>
-          </div>
-          <div className="col-12 col-md-6 py-4">
-            <div className="item-inner shadow rounded-4 p-4 h-100">
-              <h3 className="item-heading mb-4">Jantar</h3>
-              <p>A carregar ementas{dots}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
+  if (!selectedCanteen) return null;
 
   return (
     <main className="container">
       <section className="theme-section section-header help-category-section">
         <div className="container">
-          {loading && renderLoading()}
+          {loading && (
+            <>
+              <span className="visually-hidden" role="status">A carregar ementas…</span>
+              <SkeletonDay />
+            </>
+          )}
 
           {!loading &&
-            dates.map((date, index) => {
-              const iso = formatDateISO(date);
+            dates.map((date) => {
+              const iso = toISODate(date);
+              const { title, subtitle } = formatLongPt(date);
               const day = daysByDate.get(iso) ?? null;
               const meals = day?.meals ?? [];
-              const lunch =
-                meals.find((m) => m.service === "lunch") ?? null;
-              const dinner =
-                meals.find((m) => m.service === "dinner") ?? null;
+              const lunch = meals.find((m) => m.service === "lunch") ?? null;
+              const dinner = meals.find((m) => m.service === "dinner") ?? null;
 
               return (
-                <div className="day-block mb-5" key={iso || index}>
-                  <div className="section-header text-center mb-5">
-                    <h2 className="section-title mb-3">
-                      {WEEKDAY_NAMES[date.getDay()]}
+                <article
+                  className="day-block mb-5"
+                  key={iso}
+                  aria-labelledby={`day-${iso}`}
+                >
+                  <div className="section-header text-center mb-4">
+                    <h2 className="section-title mb-2" id={`day-${iso}`}>
+                      {title}
                     </h2>
-                    <p className="text-muted small mb-0">{iso}</p>
+                    <p className="text-muted small mb-0">
+                      <time dateTime={iso}>{subtitle}</time>
+                    </p>
                   </div>
 
-                  <div className="row">
-                    <div className="col-12 col-md-6 py-4">
-                      <div className="item-inner shadow rounded-4 p-4 h-100">
-                        <h3 className="item-heading mb-4">Almoço</h3>
-                        <MealBlock meal={lunch} />
-                      </div>
+                  {error && !day ? (
+                    <div className="alert alert-warning text-center" role="alert">
+                      Não foi possível carregar este dia.{" "}
+                      <button type="button" className="btn btn-sm btn-outline-success ms-2" onClick={retry}>
+                        Tentar novamente
+                      </button>
                     </div>
+                  ) : (
+                    <div className="row">
+                      <div className="col-12 col-md-6 py-4">
+                        <div className="item-inner shadow rounded-4 p-4 h-100">
+                          <h3 className="item-heading mb-4">Almoço</h3>
+                          <MealBlock meal={lunch} error={error && !day ? error : null} onRetry={retry} />
+                        </div>
+                      </div>
 
-                    <div className="col-12 col-md-6 py-4">
-                      <div className="item-inner shadow rounded-4 p-4 h-100">
-                        <h3 className="item-heading mb-4">Jantar</h3>
-                        <MealBlock meal={dinner} />
+                      <div className="col-12 col-md-6 py-4">
+                        <div className="item-inner shadow rounded-4 p-4 h-100">
+                          <h3 className="item-heading mb-4">Jantar</h3>
+                          <MealBlock meal={dinner} error={error && !day ? error : null} onRetry={retry} />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
+                  )}
+                </article>
               );
             })}
         </div>

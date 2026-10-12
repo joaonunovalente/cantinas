@@ -1,27 +1,19 @@
-import { useEffect, useState } from "react";
 import formatMenu from "./formatMenu";
 
-const LOADING_FRAMES = [".", "..", "..."];
-
-function MealCard({ title, meal, items, loading }) {
-  const [frameIndex, setFrameIndex] = useState(0);
-
-  useEffect(() => {
-    if (!loading) {
-      setFrameIndex(0);
-      return undefined;
-    }
-
-    const intervalId = setInterval(() => {
-      setFrameIndex((currentIndex) =>
-        (currentIndex + 1) % LOADING_FRAMES.length
-      );
-    }, 450);
-
-    return () => clearInterval(intervalId);
-  }, [loading]);
-
+function MealCard({ title, meal, items, loading, error, onRetry }) {
   const renderBody = () => {
+    if (error) {
+      return (
+        <div role="alert">
+          <p className="mb-2">Não foi possível carregar a ementa.</p>
+          {onRetry && (
+            <button type="button" className="btn btn-sm btn-outline-success" onClick={onRetry}>
+              Tentar novamente
+            </button>
+          )}
+        </div>
+      );
+    }
     // Compat: WeekSection/Home podem passar `items` (array) ou `meal` (objeto)
     if (meal) {
       if (meal.status === "closed") {
@@ -46,7 +38,12 @@ function MealCard({ title, meal, items, loading }) {
 
         <div className="item-desc flex-grow-1">
           {loading ? (
-            <p className="mb-0">A carregar as ementas{LOADING_FRAMES[frameIndex]}</p>
+            <div aria-hidden="true">
+              <div className="skeleton skeleton-line" />
+              <div className="skeleton skeleton-line w-75" />
+              <div className="skeleton skeleton-line w-50" />
+              <span className="visually-hidden" role="status">A carregar ementas…</span>
+            </div>
           ) : (
             renderBody()
           )}

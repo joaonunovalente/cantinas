@@ -8,9 +8,14 @@ function MainContent() {
       <div>
         <div className="row justify-content-center">
           <div className="col-lg-10">
-            <p className="mb-5">
+            <p className="mb-3">
               Caso queiras entrar em contacto com o <strong>Cantinas.pt</strong>
               , podes fazê-lo através do formulário.
+            </p>
+
+            <p className="alert alert-info small mb-5" role="note">
+              O <strong>Cantinas.pt</strong> não tem qualquer afiliação com a
+              Universidade de Aveiro.
             </p>
 
             <div className="card p-4 shadow-sm rounded-3 text-center">
@@ -67,6 +72,41 @@ function MainContent() {
                   contacto@cantinas.pt
                 </a>
               </p>
+            </div>
+
+            <hr className="my-5" />
+
+            <div className="text-start">
+              <p>
+                O <strong>Cantinas.pt</strong> apenas facilita o acesso às
+                ementas disponibilizadas pela Universidade de Aveiro.
+              </p>
+
+              <p>
+                Para entrares em contacto com os Serviços de Ação Social (SAS),
+                responsáveis pelas Unidades Alimentares, utiliza os contactos
+                oficiais:
+              </p>
+
+              <address className="mb-0">
+                <ul className="mb-0">
+                  <li>
+                    <a href="tel:+351234370348">234 370 348</a>
+                  </li>
+                  <li>
+                    <a href="mailto:sas@ua.pt">sas@ua.pt</a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.ua.pt/pt/sas"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      www.ua.pt/sas
+                    </a>
+                  </li>
+                </ul>
+              </address>
             </div>
           </div>
         </div>

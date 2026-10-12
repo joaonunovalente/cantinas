@@ -1,42 +1,18 @@
-import { useState, useEffect } from "react";
+import { useMemo } from "react";
 import PageLayout from "../layouts/PageLayout";
 import Hero from "../components/home/Hero";
 import MealsSection from "../components/home/MealsSection";
-import {
-  CANTEENS,
-  formatDateISO,
-  fetchMenus,
-  findCanteenInPayload,
-} from "../lib/api";
+import { CANTEENS, findCanteenInPayload } from "../lib/api";
+import { toISODate } from "../lib/date";
+import { useCanteenTab } from "../hooks/useCanteenTab";
+import { useMenus } from "../hooks/useMenus";
 
 function HomePage() {
-  const [activeTab, setActiveTab] = useState("santiago");
-  const [payload, setPayload] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useCanteenTab();
+  const tabs = useMemo(() => CANTEENS.map(({ id, label }) => ({ id, label })), []);
 
-  const tabs = CANTEENS.map(({ id, label }) => ({ id, label }));
-
-  useEffect(() => {
-    let cancelled = false;
-
-    const fetchEmentas = async () => {
-      const today = formatDateISO(new Date());
-      try {
-        const data = await fetchMenus({ from: today, to: today });
-        if (!cancelled) setPayload(data);
-      } catch (err) {
-        console.error(err);
-        if (!cancelled) setPayload(null);
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
-    };
-
-    fetchEmentas();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  const today = useMemo(() => toISODate(new Date()), []);
+  const { data: payload, loading, error, retry } = useMenus({ from: today, to: today });
 
   const canteen = findCanteenInPayload(payload, activeTab);
 
@@ -50,6 +26,8 @@ function HomePage() {
         activeTab={activeTab}
         canteen={canteen}
         loading={loading}
+        error={error}
+        onRetry={retry}
       />
     </PageLayout>
   );

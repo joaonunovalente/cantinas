@@ -3,50 +3,57 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/images/logo/logo-color.svg";
 import hyperlink from "../assets/images/hyperlink.png";
 import hyperlinkPurple from "../assets/images/hyperlink-purple.png";
-import unidadesAlimentares from "../data/unidadesAlimentares";
 import maisInformacoes from "../data/maisInformacoes";
 
 function Navbar() {
   const [isHovered, setIsHovered] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  const closeMenu = () => {
+    setExpanded(false);
+    // Bootstrap controla a classe .show via JS; remove para fechar no mobile.
+    document.getElementById("navigation")?.classList.remove("show");
+  };
 
   return (
     <header className="header">
       <div className="container">
-        <nav className="navbar navbar-expand-xl">
+        <nav className="navbar navbar-expand-xl" aria-label="Navegação principal">
           <div className="site-logo me-3">
-            <Link className="navbar-brand" to="/">
-              <img className="logo-icon" src={logo} alt="logo" />
+            <Link className="navbar-brand" to="/" onClick={closeMenu}>
+              <img className="logo-icon" src={logo} alt="Cantinas.pt - página inicial" />
             </Link>
           </div>
 
           <button
-            className="navbar-toggler collapsed"
+            className={`navbar-toggler ${expanded ? "" : "collapsed"}`}
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navigation"
             aria-controls="navigation"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+            aria-expanded={expanded}
+            aria-label={expanded ? "Fechar navegação" : "Abrir navegação"}
+            onClick={() => setExpanded((v) => !v)}
           >
-            <span> </span>
-            <span> </span>
-            <span> </span>
+            <span aria-hidden="true"> </span>
+            <span aria-hidden="true"> </span>
+            <span aria-hidden="true"> </span>
           </button>
 
           <div className="collapse navbar-collapse ms-auto" id="navigation">
             <ul className="navbar-nav ms-auto align-items-xl-center">
               <li className="nav-item me-lg-4">
-                <NavLink className="nav-link" to="/">
+                <NavLink className="nav-link" to="/" onClick={closeMenu}>
                   Hoje
                 </NavLink>
               </li>
               <li className="nav-item me-lg-4">
-                <NavLink className="nav-link" to="/semana">
+                <NavLink className="nav-link" to="/semana" onClick={closeMenu}>
                   Semana
                 </NavLink>
               </li>
               <li className="nav-item me-lg-4">
-                <NavLink className="nav-link" to="/horarios-precario">
+                <NavLink className="nav-link" to="/horarios-precario" onClick={closeMenu}>
                   Horários e Preçário
                 </NavLink>
               </li>
@@ -83,7 +90,7 @@ function Navbar() {
                 <ul className="dropdown-menu dropdown-menu-lg-end rounded shadow">
                   {maisInformacoes.map((item) => (
                     <li key={item.title}>
-                      <Link className="dropdown-item" to={item.href}>
+                      <Link className="dropdown-item" to={item.href} onClick={closeMenu}>
                         {item.title}
                       </Link>
                     </li>
