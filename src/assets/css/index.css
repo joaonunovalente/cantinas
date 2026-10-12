@@ -89,7 +89,7 @@
 }
 
 .navbar .nav-link.active {
-  border-bottom-color: #2e7d32;
+  border-bottom-color: #27862a;
   color: #fff !important;
 }
 
@@ -106,7 +106,7 @@
 }
 
 .nav-pills .nav-link.active {
-  background-color: #2e7d32;
+  background-color: #27862a;
   color: #fff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
@@ -115,7 +115,7 @@
 .navbar .nav-link:focus-visible,
 .btn:focus-visible,
 .footer-link:focus-visible {
-  outline: 3px solid #2e7d32;
+  outline: 3px solid #27862a;
   outline-offset: 2px;
 }
 
