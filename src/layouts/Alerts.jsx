@@ -109,13 +109,17 @@ function Alerts() {
             borderTop: `4px solid ${alert.accent}`,
           }}
         >
-          <div className="d-flex align-items-start gap-2 px-3 pt-2">
-            <i className="bi bi-info-circle-fill mt-1" aria-hidden="true" style={{ color: alert.accent }} />
-            <strong className="flex-grow-1 small">{alert.title}</strong>
+          <div className="d-flex align-items-center gap-2 px-3 pt-2">
+            <i
+              className="bi bi-info-circle-fill d-inline-flex"
+              aria-hidden="true"
+              style={{ color: alert.accent, fontSize: "1rem", lineHeight: 1 }}
+            />
+            <strong className="flex-grow-1 small lh-base mb-0">{alert.title}</strong>
             <button
               type="button"
-              className="btn btn-sm p-0 px-1 lh-1 flex-shrink-0"
-              style={{ color: "#1a1a1a", fontSize: "1rem" }}
+              className="btn btn-sm p-0 px-1 lh-1 flex-shrink-0 d-inline-flex align-items-center justify-content-center"
+              style={{ color: "#1a1a1a", fontSize: "1rem", lineHeight: 1 }}
               aria-label={`Dispensar aviso: ${alert.title}`}
               onClick={() => dismiss(alert.id)}
             >
